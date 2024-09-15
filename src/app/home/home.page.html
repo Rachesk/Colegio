@@ -1,20 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content class="ion-padding">
+  <div class="app-name">
+    <h1>Skeleton App</h1>
   </div>
+
+  <div class="welcome-message">
+    <h2>{{message}}</h2>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      
+      
+      <ion-item>
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input [(ngModel)]="username" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input [(ngModel)]="password" type="password" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" class="ion-margin-top" (click)="validateLogin()">
+        Ingresar
+      </ion-button>
+      <div class="centrado-horizontal"><a href="#">¿Olvidaste tu contraseña?</a></div>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>
