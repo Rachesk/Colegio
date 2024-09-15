@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'asistencia-generador',
+    loadChildren: () => import('./asistencia-generador/asistencia-generador.module').then( m => m.AsistenciaGeneradorPageModule)
+  },
 ];
 
 @NgModule({
