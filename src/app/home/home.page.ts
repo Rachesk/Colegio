@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HomePage {
   username: string = '';
   password: string = '';
-  message: string = 'Bienvenido';
+  message: string = 'Bienvenido!';
 
   constructor(
     private router: Router
