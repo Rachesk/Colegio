@@ -20,7 +20,7 @@ export class HomePage {
   validateLogin() {
     if (this.username === 'admin' && this.password === '1234') {
       this.message = 'Acceso correcto';
-      this.router.navigate(['/index']);
+      this.router.navigate(['/asistencia-generador']);
     } else {
       this.message = 'Acceso incorrecto';
     }
