@@ -12,7 +12,9 @@
   </ion-header>
 
   <ion-card>
-    <img alt="foto random de asistencia xd" style="height: 250px;" src="assets/img/fotoasistenciaxd.jpg"/>
+    <div class="contenedor">
+    <img alt="foto random de asistencia xd" style="height: 200px;" src="assets/img/fotoasistenciaxd.jpg"/>
+    </div>
     <ion-card-header>
       <ion-card-title style="text-align: center;">RegistrApp</ion-card-title>
     </ion-card-header>
@@ -23,7 +25,7 @@
   </ion-card>
 
   <ion-content>
-    <div>
+    <div class="contenedor">
       <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
     </div>
   

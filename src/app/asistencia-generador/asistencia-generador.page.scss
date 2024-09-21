@@ -5,3 +5,12 @@ ion-content {
   flex-direction: column;
   height: 100%;
 }
+
+
+$container-height: 40vh;
+.contenedor {
+  display: flex;
+  justify-content: center; // Centra horizontalmente
+  align-items: center;     // Centra verticalmente
+  height: $container-height; // Utilizando la variable de altura
+}
