@@ -10,19 +10,19 @@
       <ion-title size="large">Generador de asistencia</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-card-header>
+    <ion-card-title style="text-align: center;">RegistrApp</ion-card-title>
+  </ion-card-header>
 
-  <ion-card>
+  <ion-card-content style="text-align: center;">
+    Bienvenido a RegistrApp
+  </ion-card-content>
+  
+
     <div class="contenedor">
     <img alt="foto random de asistencia xd" style="height: 200px;" src="assets/img/fotoasistenciaxd.jpg"/>
     </div>
-    <ion-card-header>
-      <ion-card-title style="text-align: center;">RegistrApp</ion-card-title>
-    </ion-card-header>
   
-    <ion-card-content style="text-align: center;">
-      Bienvenido a RegistrApp
-    </ion-card-content>
-  </ion-card>
 
   <ion-content>
     <div class="contenedor">
@@ -30,7 +30,7 @@
     </div>
   
     <ion-button expand="block" (click)="generateRandomQR()">
-      Generar Nuevo QR
+      Generar QR
     </ion-button>
   </ion-content>
 
