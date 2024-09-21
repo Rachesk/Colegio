@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'menu-home',
     loadChildren: () => import('./menu-home/menu-home.module').then( m => m.MenuHomePageModule)
   },
+  {
+    path: 'registrar-qr',
+    loadChildren: () => import('./registrar-qr/registrar-qr.module').then( m => m.RegistrarQrPageModule)
+  },
 
  
 
