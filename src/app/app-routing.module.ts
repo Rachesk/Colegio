@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'asistencia-generador',
     loadChildren: () => import('./asistencia-generador/asistencia-generador.module').then( m => m.AsistenciaGeneradorPageModule)
+  },  {
+    path: 'recup-contra',
+    loadChildren: () => import('./recup-contra/recup-contra.module').then( m => m.RecupContraPageModule)
   },
+
 ];
 
 @NgModule({
