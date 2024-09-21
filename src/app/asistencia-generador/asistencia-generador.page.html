@@ -1,13 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>asistenciaGenerador</ion-title>
+    <ion-title>Generador de asistencia</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">asistenciaGenerador</ion-title>
+      <ion-title size="large">Generador de asistencia</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <img alt="foto random de asistencia xd" style="height: 250px;" src="assets/img/fotoasistenciaxd.jpg"/>
+    <ion-card-header>
+      <ion-card-title style="text-align: center;">RegistrApp</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content style="text-align: center;">
+      Bienvenido a RegistrApp
+    </ion-card-content>
+  </ion-card>
+
+  <ion-content>
+    <div>
+      <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+  
+    <ion-button expand="block" (click)="generateRandomQR()">
+      Generar Nuevo QR
+    </ion-button>
+  </ion-content>
+
 </ion-content>
