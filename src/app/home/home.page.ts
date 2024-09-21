@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomePage {
   message: string = 'Bienvenido!';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ){
 
   }
@@ -20,6 +22,7 @@ export class HomePage {
   validateLogin() {
     if (this.username === 'admin' && this.password === '1234') {
       this.message = 'Acceso correcto';
+      this.userService.setUsername(this.username);
       this.router.navigate(['/menu-home']);
     } else {
       this.message = 'Acceso incorrecto';

@@ -1,29 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Registra tu codigo QR</ion-title>
+    <ion-title>RegistrApp</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registrar-qr</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-button shape="round" routerLink="/menu-home">volver</ion-button>
-
-
-  <div class="contenedor">
-    <img alt="foto random de asistencia xd" style="height: 200px;" src="assets/img/camara.png"/>
-    </div>
-
-
-  <ion-button id="present-alert" expand="block" class="ion-margin-top">Camara</ion-button>
-  <ion-alert
-    trigger="present-alert"
-    header="Alerta, la camara no funciona!"
-    [buttons]="alertButtons"
-  ></ion-alert>
-
- 
+  <ion-button id="btn-volver" shape="round" routerLink="/menu-home">volver</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" style="text-align: center;">
+        <p>Escanea el código QR de la clase</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" style="text-align: center;">
+        <img alt="foto random de asistencia xd" style="height: 200px; display: block; margin: 0 auto;" src="assets/img/camara.png"/>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" style="text-align: center;">
+        <ion-button shape="round" id="present-alert" expand="block" class="ion-margin-top">Escanear</ion-button>
+        <ion-alert
+          trigger="present-alert"
+          header="Alerta, la camara no funciona!"
+          [buttons]="alertButtons"
+        ></ion-alert>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

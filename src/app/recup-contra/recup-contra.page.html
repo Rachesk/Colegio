@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
 <div class="app-name">
-  <h1>recupera tu contraseña</h1>
+  <h1>Recupera tu contraseña</h1>
   <div class="welcome-message">
     <h2>{{message}}</h2>
   </div>
@@ -17,7 +17,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Nueva password</ion-label>
+      <ion-label position="stacked">Nueva contraseña</ion-label>
       <ion-input [(ngModel)]="password" type="password" required></ion-input>
     </ion-item>
 
@@ -29,10 +29,10 @@
       <h2 *ngIf="isVisible">{{password}}</h2>
     </div>
 
-    <ion-button expand="block" class="ion-margin-top" (click)="validateLogin()">
+    <ion-button shape="round" expand="block" class="ion-margin-top" (click)="validateLogin()">
       Recuperar
     </ion-button>
-    <ion-button class="ion-margin-top" expand= "block" routerLink="/home">volver</ion-button>
+    <ion-button shape="round" class="ion-margin-top" expand= "block" routerLink="/home">volver</ion-button>
     
 
   </ion-card-content>

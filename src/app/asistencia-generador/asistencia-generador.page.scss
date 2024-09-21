@@ -1,16 +1,10 @@
-ion-content {
+.ion-align-items-center {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: 100%;
+  height: 50vh;
 }
 
-
-$container-height: 40vh;
-.contenedor {
-  display: flex;
-  justify-content: center; // Centra horizontalmente
-  align-items: center;     // Centra verticalmente
-  height: $container-height; // Utilizando la variable de altura
+#btn-volver {
+  margin-top: 2%;
 }
