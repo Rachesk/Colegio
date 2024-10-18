@@ -11,14 +11,12 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'asistencia-generador',
-    loadChildren: () => import('./asistencia-generador/asistencia-generador.module').then( m => m.AsistenciaGeneradorPageModule)
-  },
+ 
   {
     path: 'recup-contra',
     loadChildren: () => import('./recup-contra/recup-contra.module').then( m => m.RecupContraPageModule)
-  },  {
+  },
+  {
     path: 'menu-home',
     loadChildren: () => import('./menu-home/menu-home.module').then( m => m.MenuHomePageModule)
   },
