@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <div class="app-name">
+    <h1>Crea tu usuario</h1>
+    <div class="welcome-message"></div>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input [(ngModel)]="user" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
+
+      <ion-button shape="round" expand="block" class="ion-margin-top" (click)="register()">
+        Registrar
+      </ion-button>
+      
+      <ion-button shape="round" class="ion-margin-top" expand="block" routerLink="/home">
+        Volver
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -4,23 +4,53 @@
   </div>
 
   <div class="welcome-message">
-    <h2>{{message}}</h2>
+    <h2>Ahora se pueden crear Users y quedan en Storage!</h2>
   </div>
 
   <ion-card>
     <ion-card-content>
+      <!-- Campos para login -->
       <ion-item>
         <ion-label position="stacked">Usuario</ion-label>
-        <ion-input [(ngModel)]="username" type="text" required></ion-input>
+        <ion-input [(ngModel)]="user" type="text" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Password</ion-label>
-        <ion-input [(ngModel)]="password" type="password" required></ion-input>
+        <ion-input [(ngModel)]="pass" type="password" required></ion-input>
       </ion-item>
-      <ion-button expand="block" class="ion-margin-top" shape="round" (click)="validateLogin()">
-        Ingresar.
+
+      <!-- Botón para iniciar sesión -->
+      <ion-button shape="round" expand="block" class="ion-margin-top" (click)="login()">
+        Iniciar Sesión
       </ion-button>
-      <div class="centrado-horizontal"><a routerLink="/recup-contra">¿Olvidaste tu contraseña?</a></div>
+
+      <!-- Link para registrarse -->
+      <div class="centrado-horizontal">
+        <a routerLink="/register">¿Tienes cuenta? ¡Regístrate!</a>
+      </div>
+      <hr>
+
+      <!-- Link para cambiar contraseña -->
+      <div class="centrado-horizontal">
+        <a (click)="toggleChangePassword()">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <!-- Formulario para cambiar la contraseña -->
+      <div *ngIf="isChangingPassword">
+        <ion-item>
+          <ion-label position="stacked">Usuario</ion-label>
+          <ion-input [(ngModel)]="userToChangePassword" type="text" placeholder="Ingrese el usuario"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nueva Contraseña</ion-label>
+          <ion-input [(ngModel)]="newPassword" type="password" placeholder="Ingrese nueva contraseña"></ion-input>
+        </ion-item>
+
+        <ion-button shape="round" expand="block" class="ion-margin-top" (click)="changePassword()">
+          Cambiar Contraseña
+        </ion-button>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
