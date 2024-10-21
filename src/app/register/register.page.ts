@@ -8,8 +8,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage {
-  user: string = '';      // Propiedad para el nombre de usuario
-  password: string = '';  // Propiedad para la contraseña
+  user: string = '';      
+  password: string = '';  
 
   constructor(private storage: Storage, private alertController: AlertController) {
     this.init();

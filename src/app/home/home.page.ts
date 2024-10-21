@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage {
-  user: string = '';                   // Nombre de usuario para login
-  pass: string = '';                   // Contraseña para login
-  userToChangePassword: string = '';   // Usuario para cambiar contraseña
-  newPassword: string = '';            // Nueva contraseña
-  isChangingPassword = false;          // Controla si se muestra el formulario de cambio de contraseña
+  user: string = '';                   
+  pass: string = '';                   
+  userToChangePassword: string = '';   
+  newPassword: string = '';            
+  isChangingPassword = false;          
 
   constructor(
     private storage: Storage, 
@@ -79,12 +79,12 @@ export class HomePage {
     if (userIndex !== -1) {
       // Cambiar la contraseña del usuario
       users[userIndex].password = this.newPassword;
-      await this.storage.set('users', users); // Guardar los cambios en el almacenamiento
+      await this.storage.set('users', users); 
 
       this.showAlert('Éxito', 'Contraseña cambiada exitosamente.');
-      this.isChangingPassword = false; // Ocultar el formulario de cambio de contraseña
-      this.userToChangePassword = '';  // Limpiar el campo de usuario
-      this.newPassword = '';           // Limpiar el campo de nueva contraseña
+      this.isChangingPassword = false; 
+      this.userToChangePassword = '';  
+      this.newPassword = '';           
     } else {
       this.showAlert('Error', 'Usuario no encontrado.');
     }
