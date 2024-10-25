@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Últimas Noticias</ion-title>
+    <ion-button id="btn-logout" shape="round" routerLink="/menu-home">Volver</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card *ngFor="let article of noticias"> <!-- Cambiar 'articles' a 'noticias' -->
+    <img [src]="article.urlToImage" *ngIf="article.urlToImage" 
+         [alt]="article.title ? article.title : 'Imagen relacionada con la noticia'"/>
+    <ion-card-header>
+      <ion-card-title>{{ article.title }}</ion-card-title>
+      <ion-card-subtitle>{{ article.source.name }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ article.description }}</p>
+      <ion-button expand="full" color="primary" [href]="article.url" target="_blank">
+        Leer más
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
