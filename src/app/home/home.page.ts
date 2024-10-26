@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,8 @@ export class HomePage {
   constructor(
     private storage: Storage, 
     private alertController: AlertController, 
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.init();
   }
@@ -34,16 +36,8 @@ export class HomePage {
       return;
     }
 
-    // Obtener usuarios registrados
-    const users = await this.storage.get('users');
-    if (!users) {
-      this.showAlert('Error', 'No hay usuarios registrados.');
-      return;
-    }
-
-    // Verificar las credenciales
-    const validUser = users.find((u: any) => u.user === this.user && u.password === this.pass);
-    if (validUser) {
+    const success = await this.authService.login(this.user, this.pass);
+    if (success) {
       this.router.navigate(['/menu-home']); // Redirigir a la página principal
     } else {
       this.showAlert('Error', 'Usuario o contraseña incorrectos.');
