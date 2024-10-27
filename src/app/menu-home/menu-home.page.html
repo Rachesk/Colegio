@@ -2,12 +2,12 @@
 
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title >Menu</ion-title>
+    <ion-title class="app-name" >Menu</ion-title>
+    <img src="assets/img/logo.png" slot="end" alt="App Logo" class="app-logo">
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button id="btn-logout" shape="round" routerLink="/home">Logout</ion-button>
   <ion-grid>
     <ion-row>
       <ion-col size="12">
@@ -24,5 +24,20 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button id="btn-logout" shape="round" routerLink="/noticias">Ver noticias</ion-button>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="full" shape="round" routerLink="/home">
+        <ion-icon name="log-out-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button expand="full" shape="round" routerLink="/noticias">
+        <ion-icon name="newspaper-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

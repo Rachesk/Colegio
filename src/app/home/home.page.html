@@ -1,25 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <ion-title class="app-name">RegistrApp</ion-title>
+      <img src="assets/img/logo.png" alt="App Logo" class="app-logo">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding">
-  <div class="app-name">
-    <h1>RegistrApp</h1>
-  </div>
+
   <!--Instalar Ionic Storage para hacer funcionar el programa-->
 <!-- npm install @ionic/storage-angular
 npm install @ionic/storage
 --> <!--Instalar Ionic Storage para hacer funcionar el programa-->
   <div class="welcome-message">
-    <h2>Ahora se pueden crear Users y quedan en Storage!(Ionic storage)</h2>
+    <h2>Di presente y entérate del presente</h2>
   </div>
 
   <ion-card>
     <ion-card-content>
       
       <ion-item>
-        <ion-label position="stacked">Usuario ..</ion-label>
-        <ion-input [(ngModel)]="user" type="text" required></ion-input>
+        <ion-label position="stacked">Usuario...</ion-label>
+        <ion-input [(ngModel)]="user" type="text" required placeholder="Nombre de usuario..."></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Password</ion-label>
-        <ion-input [(ngModel)]="pass" type="password" required></ion-input>
+        <ion-input [(ngModel)]="pass" type="password" required placeholder="*****"></ion-input>
       </ion-item>
 
       
@@ -29,13 +36,13 @@ npm install @ionic/storage
 
       
       <div class="centrado-horizontal">
-        <a routerLink="/register">¿Tienes cuenta? ¡Regístrate! aaa</a>
+        <a routerLink="/register">¿No tienes cuenta? ¡Regístrate!</a>
       </div>
       <hr>
 
       
       <div class="centrado-horizontal">
-        <a (click)="toggleChangePassword()">¿Olvidaste tu contraseña?</a>
+        <a (click)="toggleChangePassword()">¿Olvidaste tu contraseña? ¡Recupérala!</a>
       </div>
 
       

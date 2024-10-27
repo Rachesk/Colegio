@@ -1,11 +1,14 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>RegistrApp</ion-title>
+    <div class="header-content">
+      <span class="app-name">RegistrApp</span>
+      <img src="assets/img/logo.png" alt="App Logo" class="app-logo">
+    </div>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-  <ion-button id="btn-volver" shape="round" routerLink="/menu-home">volver</ion-button>
   <ion-grid>
     <ion-row>
       <ion-col size="12" style="text-align: center;">
@@ -29,3 +32,13 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="full" shape="round" routerLink="/menu-home">
+        <ion-icon name="log-out-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

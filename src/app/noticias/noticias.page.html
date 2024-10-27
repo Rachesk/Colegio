@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Últimas Noticias</ion-title>
-    <ion-button id="btn-logout" shape="round" routerLink="/menu-home">Volver</ion-button>
+    <ion-title class="app-name" >Noticias</ion-title>
+    <img src="assets/img/logo.png" slot="end" alt="App Logo" class="app-logo">
   </ion-toolbar>
 </ion-header>
 
@@ -22,4 +22,12 @@
   </ion-card>
 </ion-content>
 
-
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button expand="full" shape="round" routerLink="/menu-home">
+        <ion-icon name="log-out-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
