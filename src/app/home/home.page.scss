@@ -21,3 +21,31 @@ ion-item {
 ion-card {
   margin-top: 30%;
 }
+
+.header-content {
+  display: flex;
+  align-items: center; /* Alinea el logo y el título verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+}
+
+.app-name {
+  margin-right: auto; /* Mueve el título al centro y deja espacio para el logo a la derecha */
+  text-align: center;
+}
+
+.app-logo {
+  width: 80px;
+  height: 50px;
+  border-radius: 15px;
+  margin-left: auto; 
+}
+
+ion-toolbar {
+  --background: #272727;
+  --color: rgb(238, 238, 238);
+  
+
+  --min-height: 10px;
+  --padding-top: 20px;
+  --padding-bottom: 10px;
+}

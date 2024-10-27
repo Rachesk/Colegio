@@ -13,3 +13,28 @@ ion-grid {
 #btn-volver {
   margin-top: 2%;
 }
+
+ion-toolbar {
+  --background: #272727;
+  --color: rgb(238, 238, 238);
+  --min-height: 10px;
+  --padding-top: 20px;
+  --padding-bottom: 10px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.app-name {
+  flex: 1;
+  text-align: center;
+}
+
+.app-logo {
+  width: 80px;
+  height: 50px;
+  border-radius: 15px;
+}

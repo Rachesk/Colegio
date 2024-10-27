@@ -1,0 +1,21 @@
+.app-logo {
+    width: 80px;
+    height: 50px;
+    border-radius: 15px;
+    margin-left: auto; 
+  }
+
+  .app-name {
+    margin-right: auto; 
+    text-align: center;
+  }
+
+  ion-toolbar {
+    --background: #272727;
+    --color: rgb(238, 238, 238);
+    
+  
+    --min-height: 10px;
+    --padding-top: 20px;
+    --padding-bottom: 10px;
+  }
