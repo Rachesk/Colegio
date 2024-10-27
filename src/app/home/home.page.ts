@@ -38,13 +38,13 @@ export class HomePage {
 
     const success = await this.authService.login(this.user, this.pass);
     if (success) {
-      this.router.navigate(['/menu-home']); // Redirigir a la página principal
+      this.router.navigate(['/menu-home']); // Redirigir a la pagina principal
     } else {
       this.showAlert('Error', 'Usuario o contraseña incorrectos.');
     }
   }
 
-  // Función para mostrar u ocultar el formulario de cambiar contraseña
+  // Funcion para mostrar u ocultar el formulario de cambiar contraseña
   toggleChangePassword() {
     this.isChangingPassword = !this.isChangingPassword;
     // Limpiar campos de cambio de contraseña si se cancela
@@ -54,7 +54,7 @@ export class HomePage {
     }
   }
 
-  // Función para cambiar la contraseña
+  // Funcin para cambiar la contraseña
   async changePassword() {
     if (this.userToChangePassword.trim() === '' || this.newPassword.trim() === '') {
       this.showAlert('Error', 'Por favor, rellena todos los campos.');
@@ -84,7 +84,7 @@ export class HomePage {
     }
   }
 
-  // Función para mostrar alertas
+  // Funcion para mostrar alertas
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header,

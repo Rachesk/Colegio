@@ -1,6 +1,9 @@
 .app-name {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-right: auto; 
+  margin-left: 20%; 
+  text-align: center;
 }
 
 .welcome-message {
@@ -24,14 +27,11 @@ ion-card {
 
 .header-content {
   display: flex;
-  align-items: center; /* Alinea el logo y el título verticalmente */
-  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; 
+  justify-content: center; 
 }
 
-.app-name {
-  margin-right: auto; /* Mueve el título al centro y deja espacio para el logo a la derecha */
-  text-align: center;
-}
+
 
 .app-logo {
   width: 80px;
