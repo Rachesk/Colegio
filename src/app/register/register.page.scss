@@ -1,6 +1,10 @@
 .app-name {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: auto; 
+  margin-left: 20%; 
+  text-align: center;
+  color: #39b82e;
   }
 
   .welcome-message {
@@ -29,14 +33,20 @@
     align-items: center;
   }
   
-  .app-name {
-    flex: 1;
-    text-align: center;
-    margin: 0; /* Elimina márgenes adicionales */
-  }
+ 
   
   .app-logo {
     width: 80px;
     height: 50px;
     border-radius: 15px;
   }
+
+  ion-header, ion-content {
+    --background: transparent;
+}
+
+
+.custom-button {
+  --background: #4CAF50; /* Cambia este valor por el color que prefieras */
+  --color: white;        /* Color del texto */
+}

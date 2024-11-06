@@ -34,10 +34,20 @@ ion-toolbar {
   margin-right: auto; 
   margin-left: 40%; 
   text-align: center;
+  color: #39b82e;
 }
 
 .app-logo {
   width: 80px;
   height: 50px;
   border-radius: 15px;
+}
+
+ion-header, ion-content {
+  --background: transparent;
+}
+
+.custom-button {
+  --background: #4CAF50; /* Cambia este valor por el color que prefieras */
+  --color: white;        /* Color del texto */
 }
