@@ -2,8 +2,9 @@
   text-align: center;
   margin-top: 20px;
   margin-right: auto; 
-  margin-left: 20%; 
+  margin-left:0%; 
   text-align: center;
+  color: #39b82e;
 }
 
 .welcome-message {
@@ -48,4 +49,29 @@ ion-toolbar {
   --min-height: 10px;
   --padding-top: 20px;
   --padding-bottom: 10px;
+}
+
+
+.custom-button {
+  --background: #4CAF50; /* Cambia este valor por el color que prefieras */
+  --color: white;        /* Color del texto */
+}
+
+ion-header, ion-content {
+  --background: transparent;
+}
+
+img {
+  width: 100%;           /* Para que ocupe el ancho completo */
+  max-width: 300px;      /* Tamaño máximo */
+  height: auto;          /* Mantener la proporción */
+  display: block;
+  margin: 0 auto;        /* Centrar la imagen */
+  border-radius: 10px;   /* Bordes redondeados (opcional) */
+  border: 3px solid #39b82e; /* Borde de color */
+    border-radius: 50%;        /* Redondeo completo para hacerla circular */
+    width: 150px;              /* Ajusta el tamaño de la imagen */
+    height: 150px;
+    object-fit: cover;  
+  
 }

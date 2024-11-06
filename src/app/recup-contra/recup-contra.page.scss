@@ -1,6 +1,7 @@
 .app-name {
     text-align: center;
     margin-top: 50px;
+    color: #39b82e;
   }
 
   .welcome-message {
@@ -17,3 +18,7 @@
   ion-card {
     margin-top: 30%;
   }
+
+  ion-header, ion-content {
+    --background: transparent;
+}

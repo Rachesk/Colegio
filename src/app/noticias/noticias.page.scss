@@ -11,6 +11,7 @@
   margin-right: auto; 
   margin-left: 20%; 
   text-align: center;
+  color: #39b82e;
   }
 
   ion-toolbar {
@@ -22,3 +23,7 @@
     --padding-top: 20px;
     --padding-bottom: 10px;
   }
+
+  ion-header, ion-content {
+    --background: transparent;
+}
