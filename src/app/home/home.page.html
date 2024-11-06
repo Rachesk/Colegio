@@ -1,3 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header-content">
+      <ion-title class="app-name">RegistrApp</ion-title>
+      <img src="assets/img/logo.png" alt="App Logo" class="app-logo">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding">
   <div class="app-name">
     <h1>RegistrApp</h1>
@@ -7,9 +16,9 @@
 npm install @ionic/storage
 --> <!--Instalar Ionic Storage para hacer funcionar el programa-->
   <div class="welcome-message">
-    <h2>Ahora se pueden crear Users y quedan en Storage!(Ionic storage)</h2>
+    <h2>Di presente y entérate del presente</h2>
   </div>
-
+  <img class="LOGO" src="assets/img/Logop.png" alt="App Logo">
   <ion-card>
     <ion-card-content>
       
@@ -23,9 +32,9 @@ npm install @ionic/storage
       </ion-item>
 
       
-      <ion-button shape="round" expand="block" class="ion-margin-top" (click)="login()">
+      <ion-button class="custom-button ion-margin-top" shape="round" expand="block" (click)="login()">
         Iniciar Sesión
-      </ion-button>
+    </ion-button>
 
       
       <div class="centrado-horizontal">
@@ -50,7 +59,7 @@ npm install @ionic/storage
           <ion-input [(ngModel)]="newPassword" type="password" placeholder="Ingrese nueva contraseña"></ion-input>
         </ion-item>
 
-        <ion-button shape="round" expand="block" class="ion-margin-top" (click)="changePassword()">
+        <ion-button shape="round" expand="block" class="custom-button ion-margin-top" (click)="changePassword()">
           Cambiar Contraseña
         </ion-button>
       </div>

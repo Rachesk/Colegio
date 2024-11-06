@@ -1,6 +1,27 @@
+
+.custom-button {
+  --background: #4CAF50; /* Cambia este valor por el color que prefieras */
+  --color: white;        /* Color del texto */
+}
+
+
+
+
+
+
+
+/* confi nombre de app */
 .app-name {
   text-align: center;
+<<<<<<< Updated upstream
   margin-top: 50px;
+=======
+  margin-top: 20px;
+  margin-right: auto; 
+  margin-left:0%; 
+  text-align: center;
+  color: #53bd49;
+>>>>>>> Stashed changes
 }
 
 .welcome-message {
@@ -20,4 +41,49 @@ ion-item {
 
 ion-card {
   margin-top: 30%;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+.header-content {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+
+
+
+ion-toolbar {
+  --background: #272727;
+  --color: rgb(238, 238, 238);
+  
+
+  --min-height: 10px;
+  --padding-top: 20px;
+  --padding-bottom: 10px;
+}
+/* CSS DEL LOGO DE HOME.PAGE*/
+.LOGO {
+  width: 100%;           
+  max-width: 300px;      
+  height: auto;          
+  display: block;
+  margin: 0 auto;        
+  border-radius: 10px;   
+  border: 3px solid #53bd49; 
+    border-radius: 50%;        
+    width: 150px;             
+    height: 150px;
+    object-fit: cover; 
+    
+    
+}
+/* Confi fondo de vistas en general */
+ion-header, ion-content {
+  --background: transparent;
+}
+
+
+>>>>>>> Stashed changes

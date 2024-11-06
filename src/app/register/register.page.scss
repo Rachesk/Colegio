@@ -1,6 +1,10 @@
 .app-name {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: auto; 
+  margin-left: 20%; 
+  text-align: center;
+  color: #53bd49;
   }
 
   .welcome-message {
@@ -16,4 +20,35 @@
 
   ion-card {
     margin-top: 30%;
+<<<<<<< Updated upstream
+=======
+  }
+
+  ion-toolbar {
+    --background: #272727;
+    --color: rgb(238, 238, 238);
+    --min-height: 10px;
+    --padding-top: 20px;
+    --padding-bottom: 10px;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  
+  .app-logo {
+    width: 80px;
+    height: 50px;
+    border-radius: 15px;
+  }
+
+  .custom-button {
+    --background: #4CAF50; 
+    --color: white;        
+  }
+  /* Confi fondo de vistas en general */
+  ion-header, ion-content {
+    --background: transparent;
+>>>>>>> Stashed changes
   }
