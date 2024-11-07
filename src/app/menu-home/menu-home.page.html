@@ -21,7 +21,7 @@
     
     <ion-row class="ion-margin-vertical">
       <ion-col size="12" class="ion-text-center">
-        <ion-button class="custom-button ion-margin-top" shape="round" expand="block" routerLink="/registrar-qr">Registrar código QR</ion-button>
+        <ion-button class="custom-button ion-margin-top" shape="round" expand="block" routerLink="/registrar-qr" (click)="loading2()">Registrar código QR</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -31,14 +31,16 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button expand="full" shape="round" routerLink="/home">
-        <ion-icon name="log-out-outline" style="color: green;" ></ion-icon>
+      <ion-button expand="full" shape="round" routerLink="/home" (click)="loading2()" >
+          <ion-icon name="log-out-outline" style="color: green;" ></ion-icon>
       </ion-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
       <ion-button expand="full" shape="round" routerLink="/noticias">
-        <ion-icon name="newspaper-outline" style="color: green;"></ion-icon>
+        <div (click)="loading2()" >
+        <ion-icon name="newspaper-outline" style="color: green;" ></ion-icon>
+      </div>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

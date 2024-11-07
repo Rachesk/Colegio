@@ -30,14 +30,14 @@ npm install @ionic/storage
       </ion-item>
 
       
-      <ion-button class="custom-button ion-margin-top" shape="round" expand="block" (click)="login()">
+      <ion-button class="custom-button ion-margin-top" shape="round" expand="block" (click)="login()" (click)="loading()">
     Iniciar Sesión
 </ion-button>
 
 
       
       <div class="centrado-horizontal">
-        <a routerLink="/register">¿No tienes cuenta? ¡Regístrate!</a>
+        <a routerLink="/register" (click)="loading2()">¿No tienes cuenta? ¡Regístrate!</a>
       </div>
       <hr>
 
