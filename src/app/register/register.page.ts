@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ export class RegisterPage {
   user: string = '';      
   password: string = '';  
 
-  constructor(private storage: Storage, private alertController: AlertController) {
+  constructor(private storage: Storage, private alertController: AlertController, private loadingController: LoadingController) {
     this.init();
   }
 
@@ -60,5 +60,15 @@ export class RegisterPage {
     });
 
     await alert.present();
+  }
+
+  async loading2(){
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'bubbles',
+      duration: 500
+    });
+    
+    await loading.present();
   }
 }

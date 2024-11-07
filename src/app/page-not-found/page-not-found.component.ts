@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private loadingController: LoadingController) { }
 
   ngOnInit() {}
+
+  async loading2(){
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'bubbles',
+      duration: 500
+    });
+    
+    await loading.present();
+  }
 
 }
