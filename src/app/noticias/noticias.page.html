@@ -17,7 +17,7 @@
     </ion-card-header>
     <ion-card-content>
       <p>{{ article.description }}</p>
-      <ion-button expand="full" style="--background: #09c409;" [href]="article.url" target="_blank"> Leer más </ion-button>
+      <ion-button  expand="full" style="--background: #09c409;" [href]="article.url" target="_blank"> Leer más </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>
@@ -25,9 +25,9 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button expand="full" shape="round" routerLink="/menu-home">
+      <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home">
         <div (click)="loading2()" >
-          <ion-icon name="log-out-outline" style="color: green;"></ion-icon>
+          <ion-icon class="custom-button" name="log-out-outline" style="color: rgb(255, 255, 255);"></ion-icon>
         </div>
       </ion-button>
     </ion-buttons>

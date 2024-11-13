@@ -33,3 +33,7 @@
   align-items: center; 
   justify-content: center; 
 }
+.custom-button {
+  --background: #4CAF50; /* Cambia este valor por el color que prefieras */
+  --color: white;        /* Color del texto */
+}
