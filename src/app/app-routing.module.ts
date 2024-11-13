@@ -37,9 +37,14 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'attendance',
+    loadChildren: () => import('./attendance/attendance.module').then(m => m.AttendancePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
-  }
+  },
 ];
 
 @NgModule({
