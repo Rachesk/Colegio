@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserService } from '../services/user.service';
@@ -21,8 +21,10 @@ export class HomePage {
     private storage: Storage, 
     private alertController: AlertController, 
     private router: Router,
+
     private userService: UserService,
     private authService: AuthService
+
   ) {
     this.init();
   }
@@ -92,5 +94,31 @@ export class HomePage {
     });
 
     await alert.present();
+  }
+
+  async loading(){
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'bubbles'
+    });
+
+    await loading.present();
+
+    this.login().then(() => {
+      loading.dismiss();
+    }).catch(error =>{
+      console.error("Error en el proceso de inicio de sesión:", error);
+      loading.dismiss()
+    });
+  }
+
+  async loading2(){
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'bubbles',
+      duration: 500
+    });
+    
+    await loading.present();
   }
 }

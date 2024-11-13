@@ -2,7 +2,9 @@
 
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="app-name" >Menu</ion-title>
+    <div class="header-content">
+      <label style="color: rgb(3, 212, 3); font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: larger;">Menu</label>
+    </div>
     <img src="assets/img/logo.png" slot="end" alt="App Logo" class="app-logo">
   </ion-toolbar>
 </ion-header>
@@ -12,16 +14,20 @@
     <ion-row>
       <ion-col size="12">
         <ion-card-header>
-          <ion-card-title style="text-align: center">Bienvenido a RegistrApp {{username}}!</ion-card-title>
+          <ion-card-title style="text-align: center; color: white;">Bienvenido a RegistrApp {{username}}!</ion-card-title>
         </ion-card-header>
       </ion-col>
     </ion-row>
     
     <ion-row class="ion-margin-vertical">
       <ion-col size="12" class="ion-text-center">
+ RamaJuank
         <ion-button class="custom-button ion-margin-top" shape="round" expand="block" routerLink="/registrar-qr">Registrar código QR</ion-button>
         <ion-button class="custom-button ion-margin-top" shape="round" expand="block" routerLink="/agenda">Agenda</ion-button>
 
+
+        <ion-button class="custom-button ion-margin-top" shape="round" expand="block" routerLink="/registrar-qr" (click)="loading2()">Registrar código QR</ion-button>
+ master
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -31,14 +37,21 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
+ RamaJuank
       <ion-button class="custom-button" expand="full" shape="round" routerLink="/home">
         <ion-icon name="log-out-outline" ></ion-icon>
+
+      <ion-button expand="full" shape="round" routerLink="/home" (click)="loading2()" >
+          <ion-icon name="log-out-outline" style="color: green;" ></ion-icon>
+ master
       </ion-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
+
       <ion-button class="custom-button" expand="full" shape="round" routerLink="/noticias">
         <ion-icon name="newspaper-outline"></ion-icon>
+
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

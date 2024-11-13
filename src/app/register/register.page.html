@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="app-name">Crear cuenta</ion-title>
+    <label style="color: rgb(3, 212, 3); font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: larger; align-items: center; text-align: center; justify-content: 
+    center; display: flex;">Crear cuenta</label>
     <img src="assets/img/logo.png" alt="App Logo" class="app-logo" slot="end">
   </ion-toolbar>
 </ion-header>
@@ -21,11 +22,11 @@
         <ion-input [(ngModel)]="password" type="password"></ion-input>
       </ion-item>
 
-      <ion-button  class="custom-button ion-margin-top" shape="round" expand="block"(click)="register()">
+      <ion-button  class="custom-button ion-margin-top" shape="round" expand="block"(click)="register()" (click)="loading2()">
         Registrar
       </ion-button>
       
-      <ion-button class="custom-button ion-margin-top" shape="round" expand="block" routerLink="/home">
+      <ion-button class="custom-button ion-margin-top" shape="round" expand="block" routerLink="/home" (click)="loading2()">
         Volver
       </ion-button>
     </ion-card-content>

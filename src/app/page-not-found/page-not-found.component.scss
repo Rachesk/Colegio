@@ -1,3 +1,15 @@
 ion-header, ion-content {
     --background: transparent;
 }
+
+h1{
+    text-align: center;
+}
+
+ion-button {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    --background: #4CAF50; /* Cambia este valor por el color que prefieras */
+    --color: white;        /* Color del texto */
+  }
