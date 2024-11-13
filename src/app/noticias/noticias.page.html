@@ -17,13 +17,7 @@
     </ion-card-header>
     <ion-card-content>
       <p>{{ article.description }}</p>
- RamaJuank
-      <ion-button expand="full" color="success" [href]="article.url" target="_blank">
-        Leer más
-      </ion-button>
-
       <ion-button expand="full" style="--background: #09c409;" [href]="article.url" target="_blank"> Leer más </ion-button>
- master
     </ion-card-content>
   </ion-card>
 </ion-content>
@@ -31,10 +25,10 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-
-      <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home">
-        <ion-icon name="log-out-outline" ></ion-icon>
-
+      <ion-button expand="full" shape="round" routerLink="/menu-home">
+        <div (click)="loading2()" >
+          <ion-icon name="log-out-outline" style="color: green;"></ion-icon>
+        </div>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
