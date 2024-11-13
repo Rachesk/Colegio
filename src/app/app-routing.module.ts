@@ -37,9 +37,16 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'agenda',
+    loadChildren: () => import('./agenda/agenda.module').then(m => m.AgendaPageModule)
+  }
+  ,
+  {
     path: '**',
     component: PageNotFoundComponent
-  }
+  },
+  
+  
 ];
 
 @NgModule({
