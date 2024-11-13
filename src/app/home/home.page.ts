@@ -3,7 +3,6 @@ import { Storage } from '@ionic/storage-angular';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -21,10 +20,8 @@ export class HomePage {
     private storage: Storage, 
     private alertController: AlertController, 
     private router: Router,
-
-    private userService: UserService,
-    private authService: AuthService
-
+    private authService: AuthService,
+    private loadingController: LoadingController
   ) {
     this.init();
   }
@@ -39,53 +36,56 @@ export class HomePage {
       this.showAlert('Error', 'Por favor, rellena todos los campos.');
       return;
     }
-  
+
     const success = await this.authService.login(this.user, this.pass);
     if (success) {
-      await this.userService.setUser(this.user); // Guarda el usuario actual en UserService
-      this.router.navigate(['/menu-home']); // Redirigir a la página principal
+      this.router.navigate(['/menu-home']); // Redirigir a la pagina principal
     } else {
       this.showAlert('Error', 'Usuario o contraseña incorrectos.');
     }
   }
 
-  // Función para mostrar u ocultar el formulario de cambiar contraseña
+  // Funcion para mostrar u ocultar el formulario de cambiar contraseña
   toggleChangePassword() {
     this.isChangingPassword = !this.isChangingPassword;
+    // Limpiar campos de cambio de contraseña si se cancela
     if (!this.isChangingPassword) {
       this.userToChangePassword = '';
       this.newPassword = '';
     }
   }
 
-  // Función para cambiar la contraseña
+  // Funcin para cambiar la contraseña
   async changePassword() {
     if (this.userToChangePassword.trim() === '' || this.newPassword.trim() === '') {
       this.showAlert('Error', 'Por favor, rellena todos los campos.');
       return;
     }
 
+    // Obtener los usuarios registrados
     const users = await this.storage.get('users');
     if (!users) {
       this.showAlert('Error', 'No hay usuarios registrados.');
       return;
     }
 
+    // Buscar el usuario por nombre
     const userIndex = users.findIndex((u: any) => u.user === this.userToChangePassword);
     if (userIndex !== -1) {
+      // Cambiar la contraseña del usuario
       users[userIndex].password = this.newPassword;
       await this.storage.set('users', users); 
 
       this.showAlert('Éxito', 'Contraseña cambiada exitosamente.');
-      this.isChangingPassword = false;
-      this.userToChangePassword = '';
-      this.newPassword = '';
+      this.isChangingPassword = false; 
+      this.userToChangePassword = '';  
+      this.newPassword = '';           
     } else {
       this.showAlert('Error', 'Usuario no encontrado.');
     }
   }
 
-  // Función para mostrar alertas
+  // Funcion para mostrar alertas
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header,
