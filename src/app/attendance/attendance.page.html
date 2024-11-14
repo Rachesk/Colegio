@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="app-name">Asistencias</ion-title>
+    <img src="assets/img/logo.png" slot="end" alt="App Logo" class="app-logo">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Hola, <span class="username-highlight">{{ username }}</span>!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>En esta sección podrás ver las asistencias registradas.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>General</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Asistencias totales: 0</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>No hay mas asignaturas registradas.</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <!--Se generaran cards correspondientes a las asignaturas almacenadas
+  en la información del usuario...-->
+</ion-content>
+
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home" (click)="loading2()" >
+        <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);" ></ion-icon>
+    </ion-button>
+  </ion-buttons>
