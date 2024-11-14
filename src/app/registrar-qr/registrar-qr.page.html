@@ -1,44 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <div class="header-content">
-      <span class="app-name">RegistrApp</span>
-      <img src="assets/img/logo.png" alt="App Logo" class="app-logo">
-    </div>
+    <ion-title style="text-align: center;">
+      Registrar QR
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
+<ion-content>
+  <br>
+  <br>
+  <br>
+  <br>
+  <ion-button expand="full" (click)="startScanning()" [disabled]="isScanning">
+    {{ isScanning ? 'Escaneando...' : 'Iniciar Escaneo' }}
+  </ion-button>
 
-<ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" style="text-align: center;">
-        <p style="color: white;">Escanea el código QR de la clase</p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12" style="text-align: center;">
-        <img alt="foto random de asistencia xd" style="height: 200px; display: block; margin: 0 auto;" src="assets/img/camara.png"/>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12" style="text-align: center;">
-        <ion-button class="custom-button ion-margin-top" shape="round" expand="block" id="present-alert"  >Escanear</ion-button>
-        <ion-alert
-          trigger="present-alert"
-          header="Alerta, la camara no funciona!"
-          [buttons]="alertButtons"
-        ></ion-alert>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+ 
+  <ion-card *ngIf="scannedQRCode">
+    <ion-card-header>
+      <ion-card-title>QR Escaneado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ scannedQRCode }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  
+  <ion-toast *ngIf="errorMessage" message="{{ errorMessage }}" duration="2000" color="danger"></ion-toast>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home" (click)="loading2()">
-        <ion-icon name="log-out-outline" style="color: rgb(252, 255, 252)" ></ion-icon>
-
+      <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home">
+        <div (click)="loading2()" >
+          <ion-icon class="custom-button" name="log-out-outline" style="color: rgb(255, 255, 255);"></ion-icon>
+        </div>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
