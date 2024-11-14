@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../services/news.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-noticias',
@@ -9,7 +10,9 @@ import { NewsService } from '../services/news.service';
 export class NoticiasPage implements OnInit {
   noticias: any[] = [];
 
-  constructor(private newsService: NewsService) {}
+  constructor(private newsService: NewsService,
+    private loadingController: LoadingController
+  ) {}
 
   ngOnInit() {
     this.loadNoticias();
@@ -27,5 +30,15 @@ export class NoticiasPage implements OnInit {
     } catch (error) {
       console.error('Error loading news:', error);
     }
+  }
+
+  async loading2(){
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'bubbles',
+      duration: 500
+    });
+    
+    await loading.present();
   }
 }

@@ -1,6 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="app-name" >Noticias</ion-title>
+    <div class="header-content">
+      <label style="color: rgb(3, 212, 3); font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: larger;">Ver noticias</label>
+    </div>
     <img src="assets/img/logo.png" slot="end" alt="App Logo" class="app-logo">
   </ion-toolbar>
 </ion-header>
@@ -15,9 +17,7 @@
     </ion-card-header>
     <ion-card-content>
       <p>{{ article.description }}</p>
-      <ion-button expand="full" color="primary" [href]="article.url" target="_blank">
-        Leer más
-      </ion-button>
+      <ion-button  expand="full" style="--background: #09c409;" [href]="article.url" target="_blank"> Leer más </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>
@@ -25,8 +25,10 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button expand="full" shape="round" routerLink="/menu-home">
-        <ion-icon name="log-out-outline" ></ion-icon>
+      <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home">
+        <div (click)="loading2()" >
+          <ion-icon class="custom-button" name="log-out-outline" style="color: rgb(255, 255, 255);"></ion-icon>
+        </div>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

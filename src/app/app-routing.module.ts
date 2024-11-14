@@ -37,14 +37,15 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'attendance',
-    loadChildren: () => import('./attendance/attendance.module').then(m => m.AttendancePageModule),
-    canActivate: [AuthGuard]
+    path: 'agenda',
+    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
   },
   {
     path: '**',
     component: PageNotFoundComponent
   },
+ 
+
 ];
 
 @NgModule({
