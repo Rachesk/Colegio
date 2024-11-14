@@ -5,12 +5,12 @@
     margin-left: auto; 
   }
 
-
+//nobre de la vista
   .app-name {
     text-align: center;
     margin-top: 20px;
     margin-right: auto; 
-    margin-left: 20%; 
+    margin-left: 0%; 
     text-align: center;
     color: #39b82e;
   }
@@ -20,3 +20,16 @@
     --color: white;        /* Color del texto */
   }
   
+    //Fondo de pantalla
+    ion-header, ion-content {
+      --background: transparent;
+  }
+  
+//barra de de arriba junto con nobre de pagina
+  ion-toolbar {
+    --background: #272727;
+    --color: rgb(238, 238, 238);
+    
+  
+    
+  }

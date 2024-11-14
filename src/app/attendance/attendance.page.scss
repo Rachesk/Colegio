@@ -5,12 +5,12 @@
     margin-left: auto; 
 }
 
-
+//nombre de la vista
 .app-name {
     text-align: center;
     margin-top: 20px;
     margin-right: auto; 
-    margin-left: 20%; 
+    margin-left: 0%; 
     text-align: center;
     color: #39b82e;
 }
@@ -23,3 +23,19 @@
 .username-highlight {
     color: #4CAF50; /* Cambia este valor al color que prefieras */
 }
+
+
+  //Fondo de pantalla
+  ion-header, ion-content {
+    --background: transparent;
+}
+
+
+//barra de de arriba junto con nobre de pagina
+ion-toolbar {
+    --background: #272727;
+    --color: rgb(238, 238, 238);
+    
+  
+    
+  }
