@@ -31,15 +31,24 @@ export class RegistrarQrPage implements OnInit {
 
   // Inicia el escaneo del código QR
   async startScanning() {
+    if (this.isScanning) {
+      console.log('Escáner ya está en uso.');
+      return; // Si ya está escaneando, no hacer nada
+    }
+    
     try {
+      console.log('Iniciando escaneo...');
       this.isScanning = true;
-      const result = await BarcodeScanner.startScan(); // Inicia el escaneo
-  
+
+      // Llamada al escáner
+      const result = await BarcodeScanner.startScan();
+      console.log('Resultado del escaneo:', result);
+
       if (result.hasContent) {
-        this.scannedQRCode = result.content;  // Asigna el contenido escaneado
+        this.scannedQRCode = result.content;
         this.showToast('QR escaneado con éxito');
       } else {
-        this.scannedQRCode = '';  // Si no se escaneó nada, limpiar el resultado
+        this.scannedQRCode = ''; // Si no se escaneó nada, limpiar el resultado
         this.showToast('No se escaneó ningún código');
       }
     } catch (error) {
