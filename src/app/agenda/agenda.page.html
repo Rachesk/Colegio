@@ -1,7 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="app-name">Agenda</ion-title>
-    <img src="assets/img/logo.png" slot="end" alt="App Logo" class="app-logo">
+    <div #titulo [class.animate]="animateLogo">
+      <ion-title class="app-name">Agenda</ion-title>
+    </div>
+    <div #appLogo [class.animate]="animateLogo">
+      <img src="assets/img/logo.png" slot="end" alt="App Logo" class="app-logo">
+    </div>
   </ion-toolbar>
 </ion-header>
 

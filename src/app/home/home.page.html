@@ -14,7 +14,9 @@ npm install @ionic/storage
 --> <!--Instalar Ionic Storage para hacer funcionar el programa-->
   <div class="welcome-message">
     <h2 style="color: white;">Di presente y entérate del presente</h2>
-    <img src="assets/img/Logo p.png" alt="Descripción de la imagen" />
+    <div #appLogo [class.animate]="animateLogo">
+      <img src="assets/img/Logo p.png" alt="Descripción de la imagen" />
+    </div>
   </div>
 
   <ion-card>
