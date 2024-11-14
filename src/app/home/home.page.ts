@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, AnimationController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserService } from '../services/userr.service';
@@ -10,6 +10,11 @@ import { UserService } from '../services/userr.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage {
+  @ViewChild('appLogo', { static: false }) appLogo!: ElementRef;
+  @ViewChild('titulo', { static: true }) titulo!: ElementRef;
+
+  animateLogo = false;
+
   user: string = '';                   
   pass: string = '';                   
   userToChangePassword: string = '';   
@@ -22,13 +27,31 @@ export class HomePage {
     private router: Router,
     private authService: AuthService,
     private userService: UserService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private animationCtrl: AnimationController
   ) {
     this.init();
   }
 
   async init() {
     await this.storage.create();
+  }
+
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.animateLogo = true;
+
+      const animation = this.animationCtrl.create()
+      .addElement(this.appLogo.nativeElement)
+      .duration(1500)
+      .keyframes([
+        { offset: 0, transform: 'translateX(-100px)', opacity: '0' },
+        { offset: 1, transform: 'translateX(0)', opacity: '1' }
+      ]);
+
+      animation.play();
+    },500);
   }
 
   // Función para iniciar sesión
