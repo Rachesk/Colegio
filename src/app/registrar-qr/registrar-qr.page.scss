@@ -51,3 +51,30 @@ ion-header, ion-content {
   --background: #4CAF50; /* Cambia este valor por el color que prefieras */
   --color: white;        /* Color del texto */
 }
+
+.scanner-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.result-card {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 1px solid #28a745;
+}
+
+.scan-button {
+  width: 100%;
+  max-width: 400px;
+  font-size: 1rem;
+  border-radius: 8px;
+  --background: #28a745;
+  --background-activated: #218838;
+  --background-hover: #218838;
+}
