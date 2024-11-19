@@ -5,9 +5,8 @@ const config: CapacitorConfig = {
   appName: 'Colegio',
   webDir: 'www',
   plugins: {
-    'QRCodeScanner': {}
+    'BarcodeScanner': {},  
   }
 };
 
 export default config;
-
