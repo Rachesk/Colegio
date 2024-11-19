@@ -1,11 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.7.2'
         classpath 'com.google.gms:google-services:4.4.2'
@@ -18,26 +13,25 @@ buildscript {
 apply from: "variables.gradle"
 
 def var1 = allprojects {
-
-  final def var = repositories {
-      google()
-      mavenCentral()
-      maven {
-          url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1'
-          name 'Azure'
-          credentials {
-              username = "optional"
-              password = ""
-          }
-          content {
-              includeGroup "com.github.outsystems"
-          }
-      }
-  }
-  var
+    final def var = repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1'
+            name 'Azure'
+            credentials {
+                username = "optional"
+                password = ""
+            }
+            content {
+                includeGroup "com.github.outsystems"
+            }
+        }
+    }
+    var
 }
 var1
 
 tasks.register('clean', Delete) {
-  delete rootProject.buildDir
+    delete rootProject.buildDir
 }
