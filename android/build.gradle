@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.7.2'
-        classpath 'com.google.gms:google-services:4.4.0'
+        classpath 'com.google.gms:google-services:4.4.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,24 +17,27 @@ buildscript {
 
 apply from: "variables.gradle"
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven {
-            url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1'
-            name 'Azure'
-            credentials {
-                username = "optional"
-                password = ""
-            }
-            content {
-                includeGroup "com.github.outsystems"
-            }
-        }
-    }
-}
+def var1 = allprojects {
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+  final def var = repositories {
+      google()
+      mavenCentral()
+      maven {
+          url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1'
+          name 'Azure'
+          credentials {
+              username = "optional"
+              password = ""
+          }
+          content {
+              includeGroup "com.github.outsystems"
+          }
+      }
+  }
+  var
+}
+var1
+
+tasks.register('clean', Delete) {
+  delete rootProject.buildDir
 }
