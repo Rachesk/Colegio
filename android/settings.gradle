@@ -7,7 +7,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)  // Asegura que no se usen repositorios en build.gradle
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)  // Asegura que no se usen repositorios en build.gradle
     repositories {
         google()  // Repositorio para Android
         mavenCentral()  // Repositorio para Maven Central
@@ -26,7 +26,8 @@ dependencyResolutionManagement {
     }
 }
 
-repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+ //final def set = repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//set
 include ':app'
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')
