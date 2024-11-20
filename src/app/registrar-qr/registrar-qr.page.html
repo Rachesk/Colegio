@@ -8,19 +8,24 @@
 </ion-header>
 
 <ion-content>
-  <!-- Contenedor central para resultados -->
+  
   <div class="scanner-content">
-    <!-- Resultado del escaneo -->
+    
     <ion-card *ngIf="result" class="result-card">
       <ion-card-header>
         <ion-card-title>Resultado del QR</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        {{ result }}
+        <ng-container *ngIf="isUrl(result); else plainText">
+          <a [href]="result" target="_blank">{{ result }}</a>
+        </ng-container>
+        <ng-template #plainText>
+          {{ result }}
+        </ng-template>
       </ion-card-content>
     </ion-card>
 
-    <!-- Botón de escaneo -->
+    
     <ion-button 
       expand="block" 
       color="success" 
@@ -30,13 +35,12 @@
       Escanear Código QR
     </ion-button>
   </div>
-
 </ion-content>
 
 <ion-toolbar>
   <ion-buttons slot="start">
-    <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home"  >
-        <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);" ></ion-icon>
+    <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home">
+      <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);"></ion-icon>
     </ion-button>
   </ion-buttons>
 <ion-toolbar>

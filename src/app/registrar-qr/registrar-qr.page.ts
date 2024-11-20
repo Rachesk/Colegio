@@ -30,19 +30,15 @@ export class RegistrarQrPage {
           return;
         }
 
-        
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         context.drawImage(img, 0, 0);
 
-        
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        console.log('Datos de la imagen:', imageData); 
         const code = jsQR(imageData.data, canvas.width, canvas.height);
 
         if (code) {
           this.result = code.data;
-          this.handleQRCodeResult(code.data); 
         } else {
           this.result = 'No se detectó ningún código QR';
         }
@@ -53,9 +49,12 @@ export class RegistrarQrPage {
     }
   }
 
-  private handleQRCodeResult(data: string): void {
-   
-    console.log('Resultado del código QR:', data);
+  isUrl(value: string): boolean {
+    try {
+      new URL(value);
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 }
-
