@@ -14,18 +14,15 @@ export class RegistrarQrPage {
 
   async scan(): Promise<void> {
     try {
-      // Captura de la imagen con la cámara
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: false,
-        resultType: CameraResultType.DataUrl,
+        resultType: CameraResultType.DataUrl
       });
 
-      // Creación de la imagen a partir de la fuente de datos capturada
       const img = new Image();
       img.src = image.dataUrl!;
       img.onload = () => {
-        // Crear un canvas para dibujar la imagen
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         if (!context) {
@@ -33,18 +30,16 @@ export class RegistrarQrPage {
           return;
         }
 
-        // Configuración del tamaño del canvas según la imagen
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         context.drawImage(img, 0, 0);
 
-        // Obtener los datos de imagen del canvas para detectar el QR
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
         const code = jsQR(imageData.data, canvas.width, canvas.height);
 
-        // Verificar si el código QR fue detectado
         if (code) {
-          this.result = `QR detectado: ${code.data}`; // Mostrar el contenido del QR
+          this.result = code.data; 
+          this.handleQRCodeResult(code.data); 
         } else {
           this.result = 'No se detectó ningún código QR';
         }
@@ -52,6 +47,22 @@ export class RegistrarQrPage {
     } catch (error) {
       console.error('Error al capturar o procesar el código QR:', error);
       this.result = 'Error al escanear el código QR';
+    }
+  }
+
+  handleQRCodeResult(data: string): void {
+    try {
+      const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+      if (urlPattern.test(data)) {
+       
+        window.open(data, '_blank');
+      } else {
+        
+        alert(`Contenido del QR: ${data}`);
+      }
+    } catch (error) {
+      console.error('Error al manejar el resultado del QR:', error);
+      alert('Error al procesar el código QR.');
     }
   }
 }
