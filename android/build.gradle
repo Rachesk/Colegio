@@ -1,17 +1,14 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
-  ext.kotlin_version = '1.9.0' // Ajusta la versión según lo que necesites
+  ext.kotlin_version = '1.9.0' // Ajusta según tu proyecto
   repositories {
     google()
-    jcenter()
     mavenCentral()
     maven { url 'https://jitpack.io' }
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:8.7.2'
     classpath 'com.google.gms:google-services:4.4.2'
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Agrega esta línea
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
 }
 
@@ -19,12 +16,4 @@ apply from: "variables.gradle"
 
 tasks.register('clean', Delete) {
   delete rootProject.buildDir
-}
-
-subprojects {
-  tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions {
-      jvmTarget = "17"
-    }
-  }
 }
