@@ -14,18 +14,18 @@ export class RegistrarQrPage {
 
   async scan(): Promise<void> {
     try {
-      
+      // Captura de la imagen con la cámara
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: false,
-        resultType: CameraResultType.DataUrl 
+        resultType: CameraResultType.DataUrl,
       });
 
-      
+      // Creación de la imagen a partir de la fuente de datos capturada
       const img = new Image();
       img.src = image.dataUrl!;
       img.onload = () => {
-        
+        // Crear un canvas para dibujar la imagen
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         if (!context) {
@@ -33,18 +33,18 @@ export class RegistrarQrPage {
           return;
         }
 
-        
+        // Configuración del tamaño del canvas según la imagen
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         context.drawImage(img, 0, 0);
 
-        
+        // Obtener los datos de imagen del canvas para detectar el QR
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
         const code = jsQR(imageData.data, canvas.width, canvas.height);
 
-        
+        // Verificar si el código QR fue detectado
         if (code) {
-          this.result = code.data; 
+          this.result = `QR detectado: ${code.data}`; // Mostrar el contenido del QR
         } else {
           this.result = 'No se detectó ningún código QR';
         }
@@ -55,3 +55,4 @@ export class RegistrarQrPage {
     }
   }
 }
+
