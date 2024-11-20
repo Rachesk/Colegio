@@ -21,33 +21,37 @@ export class RegistrarQrPage {
         resultType: CameraResultType.DataUrl 
       });
 
+      
       const img = new Image();
       img.src = image.dataUrl!;
       img.onload = () => {
+        
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         if (!context) {
-          this.result = 'Error: Unable to process the image.';
+          this.result = 'Error: No se pudo procesar la imagen.';
           return;
         }
 
-        canvas.width = img.width;
-        canvas.height = img.height;
+        
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
         context.drawImage(img, 0, 0);
 
         
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
         const code = jsQR(imageData.data, canvas.width, canvas.height);
 
+        
         if (code) {
           this.result = code.data; 
         } else {
-          this.result = 'No QR code detected';
+          this.result = 'No se detectó ningún código QR';
         }
       };
     } catch (error) {
-      console.error('Error capturing or processing QR code:', error);
-      this.result = 'Error scanning QR code';
+      console.error('Error al capturar o procesar el código QR:', error);
+      this.result = 'Error al escanear el código QR';
     }
   }
 }
