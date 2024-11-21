@@ -19,12 +19,15 @@ export class RegistrarQrPage {
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
       });
-
+      console.log('Imagen capturada:', image.dataUrl);
       const img = new Image();
       img.src = image.dataUrl!;
+
       img.onload = () => {
+        console.log('Imagen cargada:', img);
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
+        console.log('Contexto del canvas:', context);
         if (!context) {
           this.result = 'Error: No se pudo procesar la imagen.';
           return;
@@ -35,7 +38,9 @@ export class RegistrarQrPage {
         context.drawImage(img, 0, 0);
 
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        console.log('Datos de la imagen:', imageData);
         const code = jsQR(imageData.data, canvas.width, canvas.height);
+        console.log('Resultado del QR:', code);
 
         if (code) {
           this.result = code.data;
@@ -57,4 +62,6 @@ export class RegistrarQrPage {
       return false;
     }
   }
+
+  
 }
