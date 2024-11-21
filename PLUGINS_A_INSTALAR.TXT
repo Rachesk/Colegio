@@ -1,0 +1,21 @@
+plugins 
+npm install --legacy-peer-deps
+
+npm install @zxing/library
+
+npm install @capacitor-community/barcode-scanner @zxing/browser --legacy-peer-deps
+
+
+npm install @capacitor/core@latest @capacitor/cli@latest
+
+ionic capacitor sync
+
+npx cap sync
+
+
+npm install @capacitor/barcode-scanner
+
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+npm install jsqr

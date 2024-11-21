@@ -1,3 +1,32 @@
+pluginManagement {
+    repositories {
+        google()  // Repositorio para Android
+        mavenCentral()  // Repositorio para Maven Central
+        maven { url 'https://jitpack.io' }  // Repositorio JitPack
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)  // Asegura que no se usen repositorios en build.gradle
+    repositories {
+        google()  // Repositorio para Android
+        mavenCentral()  // Repositorio para Maven Central
+        maven { url 'https://jitpack.io' }  // Repositorio JitPack
+        maven {
+            url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1'
+            name 'Azure'
+            credentials {
+                username = "optional"
+                password = ""
+            }
+            content {
+                includeGroup "com.github.outsystems"
+            }
+        }
+    }
+}
+
+
 include ':app'
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')
