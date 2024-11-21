@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { UserService } from '../services/userr.service';
 import jsQR from 'jsqr';
 
 @Component({
@@ -10,7 +11,9 @@ import jsQR from 'jsqr';
 export class RegistrarQrPage {
   result: string = '';
 
-  constructor() {}
+  constructor(
+    private userService: UserService,
+  ) {}
 
   async scan(): Promise<void> {
     try {
@@ -44,6 +47,7 @@ export class RegistrarQrPage {
 
         if (code) {
           this.result = code.data;
+          this.storeQRCodeInfo(this.result);
         } else {
           this.result = 'No se detectó ningún código QR';
         }
@@ -63,5 +67,8 @@ export class RegistrarQrPage {
     }
   }
 
+  async storeQRCodeInfo(qrInfo: string) {
+    await this.userService.setQRInfo(qrInfo);
+  }
   
 }

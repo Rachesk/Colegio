@@ -14,6 +14,7 @@ export class AttendancePage implements OnInit {
   animateLogo = false;
 
   username: string = '';
+  qrInfo: { [key: string]: number } = {};
 
   constructor(
     private userService: UserService,
@@ -39,6 +40,7 @@ export class AttendancePage implements OnInit {
 
   async ngOnInit() {
     this.username = await this.userService.getUser();
+    this.qrInfo = await this.userService.getQRInfo();
   }
 
   async loading2() {
@@ -49,5 +51,17 @@ export class AttendancePage implements OnInit {
     });
 
     await loading.present();
+  }
+
+  getTotalAsistencias(): number {
+    return Object.values(this.qrInfo).reduce((total, num) => total + num, 0);
+  }
+
+  hasQrInfo(): boolean {
+    return this.qrInfo && Object.keys(this.qrInfo).length > 0;
+  }
+
+  isQrInfoEmpty(): boolean {
+    return !this.qrInfo || Object.keys(this.qrInfo).length === 0;
   }
 }

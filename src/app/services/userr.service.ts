@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class UserService {
   private username: string = '';
+  private qrInfo: { [key: string]: number } = {};
 
   constructor(private storage: Storage) {
     this.init();
@@ -31,5 +32,21 @@ export class UserService {
   async clearUser() {
     this.username = '';
     await this.storage.remove('username');
+  }
+
+  async setQRInfo(qrInfo: string) {
+    if (this.qrInfo[qrInfo]) {
+      this.qrInfo[qrInfo] += 1;
+    } else {
+      this.qrInfo[qrInfo] = 1;
+    }
+    await this.storage.set('qrInfo', this.qrInfo);
+  }
+
+  async getQRInfo(): Promise<{ [key: string]: number }> {
+    if (Object.keys(this.qrInfo).length === 0) {
+      this.qrInfo = await this.storage.get('qrInfo') || {};
+    }
+    return this.qrInfo;
   }
 }

@@ -19,22 +19,29 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="hasQrInfo()">
     <ion-card-header>
       <ion-card-title>General</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Asistencias totales: 0</p>
+      <p>Asistencias totales: {{ getTotalAsistencias() }}</p>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngFor="let key of qrInfo | keyvalue">
     <ion-card-header>
-      <ion-card-title>No hay mas asignaturas registradas.</ion-card-title>
+      <ion-card-title>{{ key.key }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Asistencias: {{ key.value }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="isQrInfoEmpty()">
+    <ion-card-header>
+      <ion-card-title>No hay asignaturas registradas.</ion-card-title>
     </ion-card-header>
   </ion-card>
-  <!--Se generaran cards correspondientes a las asignaturas almacenadas
-  en la información del usuario...-->
 </ion-content>
 
 <ion-toolbar>
