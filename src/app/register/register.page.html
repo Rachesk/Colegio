@@ -22,6 +22,30 @@
         <ion-input [(ngModel)]="password" type="password"></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-label position="stacked">Nombres</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Apellido Paterno</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Apellido Materno</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      
+      <ion-item>
+        <ion-label position="stacked">Fecha de nacimiento</ion-label>
+      </ion-item>
+
+      <ion-item >
+        <ion-datetime  presentation="date" preferWheel={true} display-format="DD-MMM-YYYY" class="move-left"> </ion-datetime>
+      </ion-item>
+
       <ion-button  class="custom-button ion-margin-top" shape="round" expand="block"(click)="register()" (click)="loading2()">
         Registrar
       </ion-button>
