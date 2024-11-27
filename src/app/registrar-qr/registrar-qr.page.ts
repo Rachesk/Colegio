@@ -129,5 +129,14 @@ export class RegistrarQrPage {
   cancelLoading() {
     console.log('Carga cancelada');
   }
+
+  // Función agregada para validar si el resultado es una URL válida
+  isUrl(value: string): boolean {
+    try {
+      const url = new URL(value); // Intenta convertir el valor a una URL
+      return url.protocol === 'http:' || url.protocol === 'https:'; // Verifica si es http o https
+    } catch {
+      return false; // No es una URL válida
+    }
+  }
 }
-     
