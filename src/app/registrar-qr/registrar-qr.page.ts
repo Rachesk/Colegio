@@ -24,35 +24,43 @@ export class RegistrarQrPage {
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
       });
+
       console.log('Imagen capturada:', image.dataUrl);
+
       const img = new Image();
       img.src = image.dataUrl!;
 
       img.onload = () => {
         console.log('Imagen cargada:', img);
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        console.log('Contexto del canvas:', context);
+
         if (!context) {
+          console.error('Error: No se pudo obtener el contexto del canvas.');
           this.result = 'Error: No se pudo procesar la imagen.';
           return;
         }
 
+        // Configuración del canvas
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         context.drawImage(img, 0, 0);
 
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
         console.log('Datos de la imagen:', imageData);
+
         const code = jsQR(imageData.data, canvas.width, canvas.height);
-        console.log('Resultado del QR:', code);
 
         if (code) {
           this.result = code.data;
-          this.showConfirmationAlert(this.result); 
+          console.log('QR Detectado:', this.result);
+          this.showConfirmationAlert(this.result);
         } else {
+          console.warn('No se detectó ningún código QR.');
           this.result = 'No se detectó ningún código QR';
         }
+        
       };
     } catch (error) {
       console.error('Error al capturar o procesar el código QR:', error);
@@ -69,34 +77,44 @@ export class RegistrarQrPage {
     }
   }
 
-  //nuevo mensaje de confirmacion u.u
+  // Mensaje de confirmación con manejo de errores adicional
   async showConfirmationAlert(qrInfo: string) {
-    const alert = await this.alertController.create({
-      header: 'Confirmar Registro',
-      message: `¿Deseas registrar este QR?: <strong>${qrInfo}</strong>`,
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            console.log('Registro cancelado');
+    try {
+      const alert = await this.alertController.create({
+        header: 'Confirmar Registro',
+        message: `¿Deseas registrar este QR?: <strong>${qrInfo}</strong>`,
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: () => {
+              console.log('Registro cancelado');
+            },
           },
-        },
-        {
-          text: 'Confirmar',
-          handler: () => {
-            console.log('Registro confirmado');
-            this.storeQRCodeInfo(qrInfo); 
+          {
+            text: 'Confirmar',
+            handler: () => {
+              console.log('Registro confirmado');
+              this.storeQRCodeInfo(qrInfo); // Registrar el QR después de la confirmación
+            },
           },
-        },
-      ],
-    });
+        ],
+      });
 
-    await alert.present();
+      await alert.present();
+    } catch (error) {
+      console.error('Error al mostrar el mensaje de confirmación:', error);
+    }
   }
 
+  // Almacena la información del QR en el servicio de usuario
   async storeQRCodeInfo(qrInfo: string) {
-    await this.userService.setQRInfo(qrInfo);
-    console.log(`QR registrado: ${qrInfo}`);
+    try {
+      await this.userService.setQRInfo(qrInfo);
+      console.log(`QR registrado exitosamente: ${qrInfo}`);
+    } catch (error) {
+      console.error('Error al registrar el QR:', error);
+    }
   }
 }
+            
