@@ -20,7 +20,7 @@
   <ion-list>
     <ion-item *ngFor="let note of notes; let i = index">
       {{ note }}
-      <ion-button fill="clear" color="danger" slot="end" (click)="deleteNote(i)">
+      <ion-button fill="clear" color="danger" slot="end" (click)="confirmDelete(i)">
         <ion-icon name="trash-bin-outline"></ion-icon>
       </ion-button>
     </ion-item>
