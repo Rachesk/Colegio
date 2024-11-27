@@ -5,6 +5,8 @@ npm install @capacitor/camera
 
 npm install jsqr
 
+npm install @capacitor/network
+
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ionic capacitor copy android
 
