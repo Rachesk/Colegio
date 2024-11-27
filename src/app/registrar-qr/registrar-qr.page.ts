@@ -116,5 +116,70 @@ export class RegistrarQrPage {
       console.error('Error al registrar el QR:', error);
     }
   }
+
+  async showNoInternetAlert() {
+    const alert = await this.alertController.create({
+      header: 'Sin conexión',
+      message: 'No se puede completar la acción porque no hay conexión a internet. Por favor, verifica tu conexión e inténtalo de nuevo.',
+      buttons: [
+        {
+          text: 'Reintentar',
+          handler: () => {
+            console.log('Intentando reconectar...');
+            // Llama a la función que intentará realizar la acción nuevamente
+            this.retryAction();
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Acción cancelada por falta de conexión');
+          },
+        },
+      ],
+    });
+  
+    await alert.present();
+  }
+  
+  // Función que intenta realizar la acción de nuevo
+  retryAction() {
+    console.log('Reintentando acción...');
+    // Aquí puedes reintentar la acción o mostrar otro mensaje
+  }
+
+  async showLoadingTimeoutAlert() {
+    const alert = await this.alertController.create({
+      header: 'Tiempo de espera agotado',
+      message: 'El proceso está tardando más de lo esperado. ¿Deseas esperar más tiempo o cancelar la acción?',
+      buttons: [
+        {
+          text: 'Seguir esperando',
+          handler: () => {
+            console.log('El usuario decidió seguir esperando.');
+            // Puedes reiniciar el loading o simplemente esperar más tiempo
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('El usuario decidió cancelar la acción.');
+            // Lógica para detener el proceso actual
+            this.cancelLoading();
+          },
+        },
+      ],
+    });
+  
+    await alert.present();
+  }
+  
+  // Función para cancelar la carga
+  cancelLoading() {
+    console.log('Carga cancelada por el usuario');
+    // Aquí detén cualquier proceso o muestra otro mensaje
+  }
 }
             
