@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { UserService } from '../services/userr.service';
 import jsQR from 'jsqr';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registrar-qr',
@@ -13,6 +14,7 @@ export class RegistrarQrPage {
 
   constructor(
     private userService: UserService,
+    private alertController: AlertController 
   ) {}
 
   async scan(): Promise<void> {
@@ -47,7 +49,7 @@ export class RegistrarQrPage {
 
         if (code) {
           this.result = code.data;
-          this.storeQRCodeInfo(this.result);
+          this.showConfirmationAlert(this.result); 
         } else {
           this.result = 'No se detectó ningún código QR';
         }
@@ -67,8 +69,34 @@ export class RegistrarQrPage {
     }
   }
 
+  //nuevo mensaje de confirmacion u.u
+  async showConfirmationAlert(qrInfo: string) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar Registro',
+      message: `¿Deseas registrar este QR?: <strong>${qrInfo}</strong>`,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Registro cancelado');
+          },
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+            console.log('Registro confirmado');
+            this.storeQRCodeInfo(qrInfo); 
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
   async storeQRCodeInfo(qrInfo: string) {
     await this.userService.setQRInfo(qrInfo);
+    console.log(`QR registrado: ${qrInfo}`);
   }
-  
 }
