@@ -40,7 +40,10 @@
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home">
-      <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);"></ion-icon>
+      <div (click)="loading2()">
+        <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);"></ion-icon>
+      </div>
+      
     </ion-button>
   </ion-buttons>
 <ion-toolbar>
