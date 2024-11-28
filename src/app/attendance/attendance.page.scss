@@ -24,9 +24,23 @@
     color: #4CAF50; /* Cambia este valor al color que prefieras */
 }
 
+.attendance-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
-  //Fondo de pantalla
-  ion-header, ion-content {
+.no-data-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+
+//Fondo de pantalla
+ion-header, ion-content {
     --background: transparent;
 }
 

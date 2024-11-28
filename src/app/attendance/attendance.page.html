@@ -16,6 +16,7 @@
     </ion-card-header>
     <ion-card-content>
       <p>En esta sección podrás ver las asistencias registradas.</p>
+      <ion-img src="assets/img/asist.png" alt="Attendance" class="attendance-img centered-img"></ion-img>
     </ion-card-content>
   </ion-card>
 
@@ -41,12 +42,16 @@
     <ion-card-header>
       <ion-card-title>No hay asignaturas registradas.</ion-card-title>
     </ion-card-header>
+    <ion-card-content>
+      <ion-img src="assets/img/confused.png" alt="No data" class="no-data-img centered-img"></ion-img>
+      <p>Por favor, escanea un código QR válido para registrar asistencias a tus asignaturas.</p>
+    </ion-card-content>
   </ion-card>
 </ion-content>
 
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home" (click)="loading2()" >
-        <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);" ></ion-icon>
+        <ion-icon name="chevron-back-outline" style="color: rgb(255, 255, 255);" ></ion-icon>
     </ion-button>
   </ion-buttons>
