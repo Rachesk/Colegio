@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar color="success">
-    <ion-title style="text-align: center; font-size: 1.5rem;">
-      <ion-icon name="qr-code" slot="start"></ion-icon>
+  <ion-toolbar style="color: rgb(54, 54, 54);">
+    <ion-title style="text-align: center; font-size: 1.5rem; color: #a5af4c;;">
+      <ion-icon style="color: #a5af4c;;" name="qr-code" slot="start"></ion-icon>
       Registrar QR
     </ion-title>
   </ion-toolbar>
@@ -28,9 +28,9 @@
     
     <ion-button 
       expand="block" 
-      color="success" 
+       
       (click)="scan()" 
-      class="scan-button">
+      class="scan-button; custom-button">
       <ion-icon slot="start" name="scan"></ion-icon>
       Escanear Código QR
     </ion-button>
