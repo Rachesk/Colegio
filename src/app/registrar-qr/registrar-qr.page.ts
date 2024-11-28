@@ -139,4 +139,14 @@ export class RegistrarQrPage {
       return false; // No es una URL válida
     }
   }
+
+  async loading2(){
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'bubbles',
+      duration: 500
+    });
+    
+    await loading.present();
+  }
 }
