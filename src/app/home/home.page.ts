@@ -70,6 +70,7 @@ export class HomePage {
     }
   }
   
+  
 
   // Función para mostrar u ocultar el formulario de cambiar contraseña
   toggleChangePassword() {
@@ -106,6 +107,49 @@ export class HomePage {
       this.showAlert('Error', 'Usuario no encontrado.');
     }
   }
+  isDeletingAccount: boolean = false; // Estado para mostrar/ocultar el formulario
+  userToDelete: string = ''; // Almacena el nombre del usuario a eliminar
+  passwordToDelete: string = ''; // Almacena la contraseña para confirmar la eliminación
+  
+  // Inicia el proceso de eliminación de cuenta
+  startDeleteAccount() {
+    this.isDeletingAccount = true;
+  }
+  
+  // Cancela el proceso de eliminación de cuenta
+  cancelDeleteAccount() {
+    this.isDeletingAccount = false;
+    this.userToDelete = '';
+    this.passwordToDelete = '';
+  }
+  
+  // Confirma y elimina la cuenta del usuario
+  async confirmDeleteAccount() {
+    if (this.userToDelete.trim() === '' || this.passwordToDelete.trim() === '') {
+      this.showAlert('Error', 'Por favor, completa todos los campos.');
+      return;
+    }
+  
+    const users = await this.storage.get('users');
+    if (!users) {
+      this.showAlert('Error', 'No hay usuarios registrados.');
+      return;
+    }
+  
+    const userIndex = users.findIndex(
+      (u: any) => u.user === this.userToDelete && u.password === this.passwordToDelete
+    );
+  
+    if (userIndex !== -1) {
+      users.splice(userIndex, 1); // Elimina el usuario de la lista
+      await this.storage.set('users', users); // Actualiza el almacenamiento
+      this.showAlert('Éxito', 'Cuenta eliminada correctamente.');
+      this.cancelDeleteAccount(); // Limpia el formulario y oculta la sección
+    } else {
+      this.showAlert('Error', 'Usuario o contraseña incorrectos.');
+    }
+  }
+  
 
   // Función para mostrar alertas
   async showAlert(header: string, message: string) {

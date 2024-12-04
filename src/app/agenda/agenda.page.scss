@@ -33,3 +33,11 @@
   
     
   }
+  .attendance-img {
+    width: 100%;           /* Para que ocupe el ancho completo */
+    max-width: 200px;      /* Tamaño máximo */
+    height: auto;          /* Mantener la proporción */
+    display: block;
+    margin: 0 auto;        /* Centrar la imagen */
+   
+  }

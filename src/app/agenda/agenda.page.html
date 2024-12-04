@@ -8,7 +8,15 @@
     </div>
   </ion-toolbar>
 </ion-header>
-
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Hola, <span class="username-highlight">{{ username }}</span>!</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>En esta sección podrás ver tus notas en tu agenda!.</p>
+    <ion-img src="assets/img/agg.png" alt="Attendance" class="attendance-img centered-img"></ion-img>
+  </ion-card-content>
+</ion-card>
 <ion-content [fullscreen]="true">
   <ion-item>
     <ion-label position="floating">Escribe una nota</ion-label>
@@ -30,6 +38,6 @@
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home" (click)="loading2()" >
-        <ion-icon name="log-out-outline" style="color: rgb(255, 255, 255);" ></ion-icon>
+        <ion-icon name="chevron-back-outline" style="color: rgb(255, 255, 255);" ></ion-icon>
     </ion-button>
   </ion-buttons>

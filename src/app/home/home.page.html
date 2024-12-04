@@ -71,7 +71,45 @@ npm install @ionic/storage
         <ion-button class="custom-button ion-margin-top" shape="round" expand="block"(click)="changePassword()">
           Cambiar Contraseña
         </ion-button>
+        
+        
       </div>
+      <div *ngIf="isDeletingAccount" class="delete-account-form">
+        <ion-item>
+          <ion-label position="stacked">Usuario</ion-label>
+          <ion-input [(ngModel)]="userToDelete" type="text" placeholder="Nombre de usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input [(ngModel)]="passwordToDelete" type="password" placeholder="Contraseña"></ion-input>
+        </ion-item>
+        <ion-button 
+          class="custom-button ion-margin-top" 
+          color="danger" 
+          shape="round" 
+          expand="block" 
+          (click)="confirmDeleteAccount()">
+          Confirmar Eliminación
+        </ion-button>
+        <ion-button 
+          class="custom-button ion-margin-top" 
+          shape="round" 
+          expand="block" 
+          (click)="cancelDeleteAccount()">
+          Cancelar
+        </ion-button>
+      </div>
+      
+      <ion-button 
+        class="custom-button ion-margin-top" 
+        color="danger" 
+        shape="round" 
+        expand="block" 
+        *ngIf="!isDeletingAccount" 
+        (click)="startDeleteAccount()">
+        Eliminar Cuenta
+      </ion-button>
+      
     </ion-card-content>
   </ion-card>
 </ion-content>
