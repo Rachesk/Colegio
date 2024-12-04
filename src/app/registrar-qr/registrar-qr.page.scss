@@ -54,11 +54,9 @@ ion-header, ion-content {
 
 .scanner-content {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%; 
 }
 
 .result-card {
@@ -77,4 +75,9 @@ ion-header, ion-content {
   --background: #28a745;
   --background-activated: #218838;
   --background-hover: #218838;
+}
+
+ion-fab {
+  --ion-background-color: #a5af4c; /* Cambia el color del botón si es necesario */
+  --ion-color: white; /* Color del icono */
 }
