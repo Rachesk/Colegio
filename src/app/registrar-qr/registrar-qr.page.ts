@@ -23,15 +23,11 @@ export class RegistrarQrPage {
     await loading.present();
 
     try {
-      // Verifica e instala el módulo si es necesario
       await this.checkAndInstallGoogleBarcodeModule();
-
-      // Verifica permisos
       await this.ensureCameraPermissions();
 
-      // Inicia el escáner
       const { barcodes } = await BarcodeScanner.scan({
-        formats: [BarcodeFormat.QrCode], // Usa BarcodeFormat correctamente
+        formats: [BarcodeFormat.QrCode],
       });
 
       this.result = barcodes.length > 0 ? barcodes[0].rawValue : 'No se detectó ningún código QR';
@@ -91,6 +87,24 @@ export class RegistrarQrPage {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  isUrl(value: string): boolean {
+    try {
+      const url = new URL(value);
+      return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  }
+
+  async loading2() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+      spinner: 'bubbles',
+      duration: 500,
+    });
+    await loading.present();
   }
 }
 
