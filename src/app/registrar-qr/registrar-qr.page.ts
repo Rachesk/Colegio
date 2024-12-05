@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { UserService } from '../services/userr.service';
 import { BarcodeScanner, BarcodeFormat } from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
@@ -11,6 +12,7 @@ export class RegistrarQrPage {
   result: string = '';
 
   constructor(
+    private userService: UserService,
     private alertController: AlertController,
     private loadingController: LoadingController
   ) {}
@@ -77,6 +79,7 @@ export class RegistrarQrPage {
   }
 
   async storeQRCodeInfo(qrInfo: string) {
+    await this.userService.setQRInfo(qrInfo);
     console.log(`QR registrado: ${qrInfo}`);
   }
 

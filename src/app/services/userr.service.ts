@@ -19,10 +19,10 @@ export class UserService {
   async setUser(username: string) {
     this.username = username;
     await this.storage.set('username', username);
+    this.loadQRInfo();
   }
 
   async getUser(): Promise<string> {
-    // Si `username` ya está en memoria, lo devuelve, sino lo carga desde `Storage`
     if (!this.username) {
       this.username = await this.storage.get('username') || '';
     }
@@ -34,19 +34,35 @@ export class UserService {
     await this.storage.remove('username');
   }
 
+  saveQRInfo() {
+    if (this.username) {
+      localStorage.setItem(`qrInfo_${this.username}`, JSON.stringify(this.qrInfo));
+    }
+  }
+
+  loadQRInfo() {
+    if (this.username) {
+      const storedQRInfo = localStorage.getItem(`qrInfo_${this.username}`);
+      if (storedQRInfo) {
+        this.qrInfo = JSON.parse(storedQRInfo);
+      } else {
+        this.qrInfo = {};
+      }
+    }
+  }
+
   async setQRInfo(qrInfo: string) {
+    this.loadQRInfo();
     if (this.qrInfo[qrInfo]) {
       this.qrInfo[qrInfo] += 1;
     } else {
       this.qrInfo[qrInfo] = 1;
     }
-    await this.storage.set('qrInfo', this.qrInfo);
+    this.saveQRInfo();
   }
 
   async getQRInfo(): Promise<{ [key: string]: number }> {
-    if (Object.keys(this.qrInfo).length === 0) {
-      this.qrInfo = await this.storage.get('qrInfo') || {};
-    }
+    this.loadQRInfo();
     return this.qrInfo;
   }
 }
