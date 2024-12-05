@@ -19,6 +19,7 @@ export class UserService {
   async setUser(username: string) {
     this.username = username;
     await this.storage.set('username', username);
+    this.loadQRInfo();
   }
 
   async getUser(): Promise<string> {
@@ -44,6 +45,8 @@ export class UserService {
       const storedQRInfo = localStorage.getItem(`qrInfo_${this.username}`);
       if (storedQRInfo) {
         this.qrInfo = JSON.parse(storedQRInfo);
+      } else {
+        this.qrInfo = {};
       }
     }
   }
