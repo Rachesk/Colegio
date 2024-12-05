@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { Camera, CameraResultType } from '@capacitor/camera';
-import { UserService } from '../services/userr.service';
-import jsQR from 'jsqr';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { Network } from '@capacitor/network';
+import { BarcodeScanner, BarcodeFormat } from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
   selector: 'app-registrar-qr',
@@ -14,59 +11,51 @@ export class RegistrarQrPage {
   result: string = '';
 
   constructor(
-    private userService: UserService,
     private alertController: AlertController,
     private loadingController: LoadingController
   ) {}
 
   async scan(): Promise<void> {
+    const loading = await this.loadingController.create({
+      message: 'Escaneando...',
+      spinner: 'crescent',
+    });
+    await loading.present();
+
     try {
-      const image = await Camera.getPhoto({
-        quality: 90,
-        allowEditing: false,
-        resultType: CameraResultType.DataUrl,
+      await this.checkAndInstallGoogleBarcodeModule();
+      await this.ensureCameraPermissions();
+
+      const { barcodes } = await BarcodeScanner.scan({
+        formats: [BarcodeFormat.QrCode],
       });
 
-      console.log('Imagen capturada:', image.dataUrl);
+      this.result = barcodes.length > 0 ? barcodes[0].rawValue : 'No se detectó ningún código QR';
 
-      const img = new Image();
-      img.src = image.dataUrl!;
-
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        if (!context) {
-          this.result = 'Error al procesar la imagen';
-          return;
-        }
-
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        context.drawImage(img, 0, 0);
-
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        const qrData = this.processQRCode(imageData);
-
-        if (qrData) {
-          this.result = qrData;
-          this.showConfirmationAlert(this.result);
-        } else {
-          this.result = 'No se detectó ningún código QR';
-        }
-      };
-
-      img.onerror = () => {
-        this.result = 'Error al cargar la imagen';
-      };
-    } catch (error) {
-      console.error('Error al capturar el QR:', error);
-      this.result = 'Error al escanear el QR';
+      if (this.result) {
+        this.showConfirmationAlert(this.result);
+      }
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Ocurrió un problema desconocido.';
+      console.error('Error al escanear el QR:', errorMessage);
+      this.showAlert('Error', errorMessage);
+    } finally {
+      loading.dismiss();
     }
   }
 
-  processQRCode(imageData: ImageData): string | null {
-    const code = jsQR(imageData.data, imageData.width, imageData.height);
-    return code ? code.data : null;
+  async checkAndInstallGoogleBarcodeModule(): Promise<void> {
+    const { available } = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
+    if (!available) {
+      await BarcodeScanner.installGoogleBarcodeScannerModule();
+    }
+  }
+
+  async ensureCameraPermissions(): Promise<void> {
+    const { camera } = await BarcodeScanner.checkPermissions();
+    if (camera !== 'granted') {
+      await BarcodeScanner.requestPermissions();
+    }
   }
 
   async showConfirmationAlert(qrInfo: string) {
@@ -77,7 +66,6 @@ export class RegistrarQrPage {
         {
           text: 'Cancelar',
           role: 'cancel',
-          handler: () => console.log('Registro cancelado'),
         },
         {
           text: 'Confirmar',
@@ -85,68 +73,39 @@ export class RegistrarQrPage {
         },
       ],
     });
-
     await alert.present();
   }
 
   async storeQRCodeInfo(qrInfo: string) {
-    try {
-      const isConnected = await Network.getStatus();
-      if (!isConnected.connected) {
-        this.showNoInternetAlert();
-        return;
-      }
-
-      await this.userService.setQRInfo(qrInfo);
-      console.log(`QR registrado: ${qrInfo}`);
-    } catch (error) {
-      console.error('Error al registrar el QR:', error);
-    }
+    console.log(`QR registrado: ${qrInfo}`);
   }
 
-  async showNoInternetAlert() {
+  async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
-      header: 'Sin conexión',
-      message: 'No se puede completar la acción porque no hay conexión a internet.',
-      buttons: [{ text: 'Reintentar', handler: () => this.retryAction() }, { text: 'Cancelar', role: 'cancel' }],
+      header,
+      message,
+      buttons: ['OK'],
     });
     await alert.present();
   }
 
-  retryAction() {
-    console.log('Reintentando...');
-  }
-
-  async showLoadingTimeoutAlert() {
-    const alert = await this.alertController.create({
-      header: 'Tiempo de espera agotado',
-      message: 'El proceso está tardando más de lo esperado.',
-      buttons: [{ text: 'Cancelar', role: 'cancel', handler: () => this.cancelLoading() }],
-    });
-    await alert.present();
-  }
-
-  cancelLoading() {
-    console.log('Carga cancelada');
-  }
-
-  // Función agregada para validar si el resultado es una URL válida
   isUrl(value: string): boolean {
     try {
-      const url = new URL(value); // Intenta convertir el valor a una URL
-      return url.protocol === 'http:' || url.protocol === 'https:'; // Verifica si es http o https
+      const url = new URL(value);
+      return url.protocol === 'http:' || url.protocol === 'https:';
     } catch {
-      return false; // No es una URL válida
+      return false;
     }
   }
 
-  async loading2(){
+  async loading2() {
     const loading = await this.loadingController.create({
       message: 'Cargando...',
       spinner: 'bubbles',
-      duration: 500
+      duration: 500,
     });
-    
     await loading.present();
   }
 }
+
+

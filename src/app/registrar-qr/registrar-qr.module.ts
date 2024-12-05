@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { RegistrarQrPageRoutingModule } from './registrar-qr-routing.module';
-
 import { RegistrarQrPage } from './registrar-qr.page';
 
 @NgModule({
@@ -17,3 +16,4 @@ import { RegistrarQrPage } from './registrar-qr.page';
   declarations: [RegistrarQrPage]
 })
 export class RegistrarQrPageModule {}
+

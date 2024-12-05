@@ -22,43 +22,11 @@ ion-toolbar {
   --padding-bottom: 10px;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.app-name {
-  text-align: center;
-  margin-top: 20px;
-  margin-right: auto; 
-  margin-left: 40%; 
-  text-align: center;
-  
-}
-
-.app-logo {
-  width: 80px;
-  height: 50px;
-  border-radius: 15px;
-}
-
-ion-header, ion-content {
-  --background: transparent;
-}
-
-.custom-button {
-  --background: #a5af4c; /* Cambia este valor por el color que prefieras */
-  --color: white;        /* Color del texto */
-}
-
 .scanner-content {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%; 
 }
 
 .result-card {
@@ -69,12 +37,12 @@ ion-header, ion-content {
   border: 1px solid #28a745;
 }
 
-.scan-button {
-  width: 100%;
-  max-width: 400px;
-  font-size: 1rem;
-  border-radius: 8px;
-  --background: #28a745;
-  --background-activated: #218838;
-  --background-hover: #218838;
+.custom-button {
+  --background: #a5af4c;
+  --color: white;
+}
+
+ion-fab {
+  --ion-background-color: #a5af4c;
+  --ion-color: white;
 }

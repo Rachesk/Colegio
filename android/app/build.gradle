@@ -6,7 +6,7 @@ android {
   compileSdk rootProject.ext.compileSdkVersion
   defaultConfig {
     applicationId "io.ionic.starter"
-    minSdkVersion rootProject.ext.minSdkVersion
+    minSdkVersion 26 
     targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 1
     versionName "1.0"
@@ -28,11 +28,19 @@ android {
   kotlinOptions {
     jvmTarget = "17"
   }
+
+  buildFeatures {
+    dataBinding true
+  }
+  
+  dataBinding {
+    enabled = true
+  }
 }
 
 repositories {
-  google()
-  mavenCentral()
+  google() 
+  mavenCentral() 
   maven {
     url 'https://pkgs.dev.azure.com/OutSystemsRD/9e79bc5b-69b2-4476-9ca5-d67594972a52/_packaging/PublicArtifactRepository/maven/v1'
     credentials {
@@ -51,6 +59,7 @@ dependencies {
   androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
   androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
   implementation project(':capacitor-cordova-android-plugins')
+  
 }
 
 apply from: 'capacitor.build.gradle'

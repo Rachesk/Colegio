@@ -1,15 +1,14 @@
 plugins 
-npm install --legacy-peer-deps
+npm install 
 
-npm install @capacitor/camera
+npm install @capacitor-mlkit/barcode-scanning
 
-npm install jsqr
-
-npm install @capacitor/network
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ionic capacitor copy android
 
 npx cap sync                    .... estos son para android
+
+npx cap sync android
 
 ionic capacitor open android

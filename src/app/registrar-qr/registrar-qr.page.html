@@ -1,16 +1,14 @@
 <ion-header>
   <ion-toolbar style="color: rgb(54, 54, 54);">
-    <ion-title style="text-align: center; font-size: 1.5rem; color: #a5af4c;;">
-      <ion-icon style="color: #a5af4c;;" name="qr-code" slot="start"></ion-icon>
+    <ion-title style="text-align: center; font-size: 1.5rem; color: #a5af4c;">
+      <ion-icon style="color: #a5af4c;" name="qr-code" slot="start"></ion-icon>
       Registrar QR
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
   <div class="scanner-content">
-    
     <ion-card *ngIf="result" class="result-card">
       <ion-card-header>
         <ion-card-title>Resultado del QR</ion-card-title>
@@ -25,15 +23,11 @@
       </ion-card-content>
     </ion-card>
 
-    
-    <ion-button 
-      expand="block" 
-       
-      (click)="scan()" 
-      class="scan-button; custom-button">
-      <ion-icon slot="start" name="scan"></ion-icon>
-      Escanear Código QR
-    </ion-button>
+    <ion-fab vertical="center" horizontal="center">
+      <ion-fab-button (click)="scan()" class="custom-fab-button">
+        <ion-icon name="qr-code-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-content>
 
@@ -41,9 +35,8 @@
   <ion-buttons slot="start">
     <ion-button class="custom-button" expand="full" shape="round" routerLink="/menu-home">
       <div (click)="loading2()">
-        <ion-icon name="chevron-back-outline" style="color: rgb(255, 255, 255);" ></ion-icon>
+        <ion-icon name="chevron-back-outline" style="color: rgb(255, 255, 255);"></ion-icon>
       </div>
-      
     </ion-button>
   </ion-buttons>
-<ion-toolbar>
+</ion-toolbar>
