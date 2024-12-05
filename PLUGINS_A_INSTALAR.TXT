@@ -9,4 +9,6 @@ ionic capacitor copy android
 
 npx cap sync                    .... estos son para android
 
+npx cap sync android
+
 ionic capacitor open android
