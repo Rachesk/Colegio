@@ -8,8 +8,15 @@
 </ion-header>
 
 <ion-content>
+
+  <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   <div class="scanner-content">
-    <ion-card *ngIf="result" class="result-card">
+    <ion-card class="result-card">
       <ion-card-header>
         <ion-card-title>Resultado del QR</ion-card-title>
       </ion-card-header>
@@ -23,9 +30,6 @@
       </ion-card-content>
     </ion-card>
 
-    <br>
-    <br>
-    <br>
     <ion-fab vertical="center" horizontal="center">
       <ion-fab-button (click)="scan()" class="custom-fab-button">
         <ion-icon name="qr-code-outline"></ion-icon>
