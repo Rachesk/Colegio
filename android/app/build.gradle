@@ -28,6 +28,14 @@ android {
   kotlinOptions {
     jvmTarget = "17"
   }
+
+  buildFeatures {
+    dataBinding true
+  }
+  
+  dataBinding {
+    enabled = true
+  }
 }
 
 repositories {
