@@ -74,18 +74,23 @@ export class UserService {
     this.loadQRInfo();
     this.loadUserAsignaturas();
     const [asignatura, seccion, sala, fecha] = qrInfo.split('|');
-    const key = `${asignatura}|${seccion}|${sala}|${fecha}`;
+    const key = `${asignatura}|${seccion}|${sala}`;
 
     if (!this.userAsignaturas.includes(asignatura)) {
       throw new Error('El usuario no tiene esta asignatura registrada.');
     }
 
-    if (this.qrInfo[key]) {
+    if (this.qrInfo[key] && this.qrInfo[key].fecha === fecha) {
       throw new Error('Ya existe una asistencia registrada para esta asignatura en esta fecha.');
     }
 
-    
-    this.qrInfo[key] = { asignatura, seccion, sala, fecha, count: 1 };
+    if (this.qrInfo[key]) {
+      this.qrInfo[key].fecha = fecha;
+      this.qrInfo[key].count += 1;
+    } else {
+      this.qrInfo[key] = { asignatura, seccion, sala, fecha, count: 1 };
+    }
+
     this.saveQRInfo();
   }
 
