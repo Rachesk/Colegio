@@ -71,7 +71,18 @@ export class RegistrarQrPage {
         },
         {
           text: 'Confirmar',
-          handler: () => this.storeQRCodeInfo(qrInfo),
+          handler: async () => {
+            try {
+              await this.storeQRCodeInfo(qrInfo);
+              this.showAlert('Éxito', 'Asistencia registrada correctamente.');
+            } catch (error) {
+              if (error instanceof Error) {
+                this.showAlert('Error', error.message);
+              } else {
+                this.showAlert('Error', 'Ocurrió un error desconocido.');
+              }
+            }
+          },
         },
       ],
     });
@@ -79,8 +90,16 @@ export class RegistrarQrPage {
   }
 
   async storeQRCodeInfo(qrInfo: string) {
-    await this.userService.setQRInfo(qrInfo);
-    console.log(`QR registrado: ${qrInfo}`);
+    try {
+      await this.userService.setQRInfo(qrInfo);
+      console.log(`QR registrado: ${qrInfo}`);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error('Ocurrió un error desconocido.');
+      }
+    }
   }
 
   async showAlert(header: string, message: string) {
