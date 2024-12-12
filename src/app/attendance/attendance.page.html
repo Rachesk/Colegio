@@ -26,15 +26,19 @@
     </ion-card-header>
     <ion-card-content>
       <p>Asistencias totales: {{ getTotalAsistencias() }}</p>
+      <p>Última asistencia registrada: {{ getLastAttendanceDate() }}</p>
     </ion-card-content>
   </ion-card>
 
   <ion-card *ngFor="let key of qrInfo | keyvalue">
     <ion-card-header>
-      <ion-card-title>{{ key.key }}</ion-card-title>
+      <ion-card-title>{{ key.value.asignatura }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Asistencias: {{ key.value }}</p>
+      <p>Sección: {{ key.value.seccion }}</p>
+      <p>Sala: {{ key.value.sala }}</p>
+      <p>Asistencias: {{ key.value.count }}</p>
+      <p>Última asistencia: {{ key.value.fecha }}</p>
     </ion-card-content>
   </ion-card>
 

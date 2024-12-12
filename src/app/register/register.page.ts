@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { UserService } from '../services/userr.service';
 
 @Component({
   selector: 'app-register',
@@ -8,10 +9,15 @@ import { AlertController, LoadingController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage {
-  user: string = '';      
-  password: string = '';  
+  user: string = '';
+  password: string = '';
 
-  constructor(private storage: Storage, private alertController: AlertController, private loadingController: LoadingController) {
+  constructor(
+    private storage: Storage,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private userService: UserService
+  ) {
     this.init();
   }
 
@@ -42,6 +48,15 @@ export class RegisterPage {
     // Añadir el nuevo usuario a la lista
     users.push({ user: this.user, password: this.password });
     await this.storage.set('users', users);
+
+    // Establecer el usuario en UserService
+    await this.userService.setUser(this.user);
+
+    // Agregar asignaturas al usuario directamente
+    const asignaturasArray = ['PGY4121', 'ASY4131', 'CSY4111'];
+    for (const asignatura of asignaturasArray) {
+      await this.userService.addAsignatura(asignatura);
+    }
 
     // Mostrar una alerta de éxito
     this.showAlert('Éxito', 'Usuario registrado correctamente.');
