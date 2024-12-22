@@ -14,12 +14,12 @@ export class AttendancePage implements OnInit {
   animateLogo = false;
 
   username: string = '';
-  qrInfo: { [key: string]: number } = {};
+  qrInfo: { [key: string]: { asignatura: string, seccion: string, sala: string, fecha: string, count: number } } = {};
 
   constructor(
     private userService: UserService,
     private loadingController: LoadingController,
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
   ) { }
 
   ngAfterViewInit() {
@@ -54,11 +54,19 @@ export class AttendancePage implements OnInit {
   }
 
   getTotalAsistencias(): number {
-    return Object.values(this.qrInfo).reduce((total, num) => total + num, 0);
+    return Object.values(this.qrInfo).reduce((total, info) => total + info.count, 0);
   }
 
   hasQrInfo(): boolean {
     return this.qrInfo && Object.keys(this.qrInfo).length > 0;
+  }
+
+  getLastAttendanceDate(): string {
+    if (this.isQrInfoEmpty()) {
+      return 'No hay asistencias registradas.';
+    }
+    const dates = Object.values(this.qrInfo).map(info => info.fecha);
+    return dates.sort().reverse()[0]; // Obtener la fecha más reciente
   }
 
   isQrInfoEmpty(): boolean {
